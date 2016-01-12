@@ -30,37 +30,37 @@
 			<div class="form-group">
               <label for="" class="control-label col-lg-6">Plant or Unit SD?</label>
               <div class="col-lg-6">
-                <input type="text" name="ref1" id="ref1" value="{{$basic_failure->ref1}}"   class="form-control">
+                <input type="text" name="ref1" id="ref1" value="{{$basic_failure->ref1}}"  required class="form-control">
               </div>
           </div>
           <div class="form-group">
             <label for="" class="control-label col-lg-6">Damage Cost (Bath)</label>
             <div class="col-lg-6">
-              <input type="text"  name="ref2" id="ref2" value="{{$basic_failure->ref2}}"  class="form-control">
+              <input type="text"  name="ref2" id="ref2" value="{{$basic_failure->ref2}}" required class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="control-label col-lg-6">Spare part problem</label>
             <div class="col-lg-6">
-              <input type="text" name="ref3" id="ref3" value="{{$basic_failure->ref3}}"  class="form-control">
+              <input type="text" name="ref3" id="ref3" value="{{$basic_failure->ref3}}" required class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="control-label col-lg-6">Maintenance Time</label>
             <div class="col-lg-6">
-              <input type="text" name="ref4" id="ref4" value="{{$basic_failure->ref4}}"  class="form-control">
+              <input type="text" name="ref4" id="ref4" value="{{$basic_failure->ref4}}" required class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="control-label col-lg-6">Unit Preparation and Start up time</label>
             <div class="col-lg-6">
-              <input type="text" name="ref5" id="ref5" value="{{$basic_failure->ref5}}" class="form-control">
+              <input type="text" name="ref5" id="ref5" value="{{$basic_failure->ref5}}" required class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label for="" class="control-label col-lg-6">Total Economic loss (Bath)</label>
             <div class="col-lg-6">
-              <input type="text" value="{{$basic_failure->ref6}}" name="ref6" id="ref6"  class="form-control">
+              <input type="text" value="{{$basic_failure->ref6}}" name="ref6" id="ref6" required class="form-control">
             </div>
           </div>
           <div class="form-group">
@@ -72,7 +72,7 @@
           <div class="form-group">
             <label for="" class="control-label col-lg-6">None</label>
             <div class="col-lg-6">
-              <input type="text" value="{{$basic_failure->ref8}}" name="ref8" id="ref8"  class="form-control">
+              <input type="text" value="{{$basic_failure->ref8}}" name="ref8" id="ref8" required class="form-control">
             </div>
           </div>
 	<hr>
