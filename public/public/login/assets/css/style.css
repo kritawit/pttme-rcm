@@ -1,0 +1,228 @@
+/*
+	@Name			Loginly - Bootstrap Login Page Template
+	@Author			nogai
+	@Type 			CSS
+	@Last Update	08:51 PM Thursday, November 1st, 2014
+
+	Table of Contents
+	---------------------------
+	 1. Reset CSS
+	 2. Global
+	 3. Background & Color
+	 4. Content
+	 5. Footer
+	 6. Media Queries
+
+*/
+
+
+/* 1. Reset CSS */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+a, a:hover{
+    text-decoration:none;
+}
+table {
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+strong{
+    font-weight: bold;
+}
+ol,ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+caption,th {
+    text-align: left;
+
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+    color:#444;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border: 0;
+}
+.clear {
+    clear: both;
+    width: auto;
+}
+
+
+/* 2. Global */
+
+body {
+    font-family:'cs_prajadbold','RobotoDraft','Roboto', 'Helvetica Neue', 'Lucida Grande', Arial, Verdana, sans-serif;
+    color: #333;
+}
+h1 {
+    font-size: 6em;
+}
+p {
+    font-size: 1em;
+}
+a {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.overlay {
+    background: #35302b;
+    opacity: 0.7;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.section {
+    height: 100%;
+}
+
+/* 3. Background & Color */
+
+.image-background {
+    background: url(../img/desk.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.solid-color-link {
+    color: #2db3ce;
+}
+.solid-color-link:hover {
+    color: #515151;
+}
+.btn-solid-color {
+    background: #2db3ce;
+    opacity: 0.8;
+    color: #fff;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.btn-solid-color:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+/* 4. Content */
+
+.box {
+    background: #ffffff;
+    border: 5px solid rgba(255, 255, 255, 0.15);
+    -webkit-background-clip: padding-box; /* for Safari */
+    -moz-background-clip: padding-box; /* for old Firefox */
+    -o-background-clip: padding-box; /* for old Firefox */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    padding: 25px 25px;
+    margin-top: 5%;
+}
+.box-logo {
+    text-align: center;
+}
+.box-form {
+    width: 100%;
+    display: inline-block;
+}
+.box-form p {
+    color: #898989;
+    font-size: 0.9em;
+}
+.box-form input {
+    background: #f8f8f8;
+    width: 100%;
+    border: #f3f3f3 1px solid;
+    margin: 10px auto;
+    padding: 8px 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.box-form label {
+    width: 100%;
+    color: #ff0000;
+    font-weight: 200;
+    font-size: 0.9em;
+    display: inline-block;
+    margin: 5px auto;
+}
+.box-form label input{
+    width: 20px;
+    margin: 4px 0 0 0;
+    padding: 0;
+    background: none;
+    border: 0;
+}
+.box-links {
+    width: 100%;
+    display: inline-block;
+    padding: 25px 0 0 0;
+}
+
+/* 5. Footer */
+
+footer {
+    color: #f8f8f8;
+    padding: 20px 0;
+}
+footer p {
+    font-size: 1em;
+}
+footer small {
+    font-size: 0.9em;
+}
+
+/* 6. Media Queries */
+
+@media only screen and (max-width: 479px) {
+    .box {
+        background: #ffffff;
+        border: 5px solid rgba(255, 255, 255, 0.15);
+        -webkit-background-clip: padding-box; /* for Safari */
+        -moz-background-clip: padding-box; /* for old Firefox */
+        -o-background-clip: padding-box; /* for old Firefox */
+        background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+        padding: 25px 25px;
+        margin-top: 5%;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    .box {
+        background: #ffffff;
+        border: 5px solid rgba(255, 255, 255, 0.15);
+        -webkit-background-clip: padding-box; /* for Safari */
+        -moz-background-clip: padding-box; /* for old Firefox */
+        -o-background-clip: padding-box; /* for old Firefox */
+        background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+        padding: 25px 25px;
+        margin-top: 5%;
+    }
+}
