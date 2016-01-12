@@ -107,7 +107,7 @@
                             <script type="text/javascript">
                                 var playerInstance = jwplayer("rcm_login")
                                 playerInstance.setup({
-                                    file: "public/media/RCM Login.m4v",
+                                    file: "public/media/RCM_Login.mov",
                                     width: "400px",
                                     height: "225px",
                                     aspectratio: "16:9",
@@ -126,7 +126,7 @@
                             <script type="text/javascript">
                                 var playerInstance = jwplayer("new_project")
                                 playerInstance.setup({
-                                    file: "public/media/RCM New Project.m4v",
+                                    file: "public/media/RCM_New_Project.mov",
                                     width: "400px",
                                     height: "225px",
                                     aspectratio: "16:9",
@@ -139,13 +139,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>3. RCM REFERENCE DATA -  EQUIPMENT CATEGORY</td>
+                        <td>3. REFERENCE DATA -  EQUIPMENT CATEGORY</td>
                         <td>
                             <div id="equipment_category">Loading the player...</div>
                             <script type="text/javascript">
                                 var playerInstance = jwplayer("equipment_category")
                                 playerInstance.setup({
-                                    file: "public/media/RCM Reference Data Equipment Category.m4v",
+                                    file: "public/media/RCM_Reference_Data_Equipment_Category.mov",
                                     width: "400px",
                                     height: "225px",
                                     aspectratio: "16:9",
@@ -164,7 +164,7 @@
                             <script type="text/javascript">
                                 var playerInstance = jwplayer("equipment_type")
                                 playerInstance.setup({
-                                    file: "public/media/RCM Reference Data Equipment Type.m4v",
+                                    file: "public/media/RCM_Reference_Data_Equipment_Type.mov",
                                     width: "400px",
                                     height: "225px",
                                     aspectratio: "16:9",
@@ -179,7 +179,20 @@
                     <tr>
                         <td>5. REFERENCE DATA - EQUIPMENT PART</td>
                         <td>
-
+                            <div id="equipment_part">Loading the player...</div>
+                            <script type="text/javascript">
+                                var playerInstance = jwplayer("equipment_part")
+                                playerInstance.setup({
+                                    file: "public/media/RCM_Reference_Data_Equipment_Part.mov",
+                                    width: "400px",
+                                    height: "225px",
+                                    aspectratio: "16:9",
+                                    title:'RCM REFERENCE DATA - EQUIPMENT PART',
+                                    skin: {
+                                        name: "stormtrooper"
+                                    }
+                                });
+                            </script>
                         </td>
                     </tr>
                     <tr>
