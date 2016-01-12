@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2016 at 03:46 PM
+-- Generation Time: Jan 12, 2016 at 10:16 PM
 -- Server version: 5.5.44-0ubuntu0.14.10.1-log
 -- PHP Version: 5.5.12-2ubuntu4.6
 
@@ -84,7 +84,262 @@ CREATE TABLE IF NOT EXISTS `asset_complex_detail` (
   `updated_by` int(11) DEFAULT NULL,
   `active` int(1) DEFAULT '1',
   `project_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=250 ;
+
+--
+-- Dumping data for table `asset_complex_detail`
+--
+
+INSERT INTO `asset_complex_detail` (`id`, `node`, `complex_id`, `rows`, `columns`, `description`, `type`, `ref1`, `ref_id`, `created_at`, `created_by`, `updated_at`, `updated_by`, `active`, `project_id`) VALUES
+(1, 38, 2, 8, 0, 'Can know unusual sign before failure occuring', 3, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(2, 38, 2, 10, 0, 'Can not know any sign before failure occuring', 3, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(3, 38, 2, 1, 0, 'Extreme Unlikelihood', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(4, 38, 2, 2, 0, 'Remote likelihood', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(5, 38, 2, 1, 1, '< 0.3 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(6, 38, 2, 3, 0, 'Very low likelihood', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(7, 38, 2, 1, 2, '< 0.1 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(8, 38, 2, 4, 0, 'Low likelihood', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(9, 38, 2, 1, 3, '< 0.01 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(10, 38, 2, 5, 0, 'Moderate', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(11, 38, 2, 1, 4, 'No/Slight Effect', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(12, 38, 2, 1, 1, '#00B050', 5, 'Non Critical', 42, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(13, 38, 2, 6, 0, 'Medium', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(14, 38, 2, 1, 5, '"- No or Slight impact to Community, Reputation and Customer\r\n- No fault or insignificant fault of complying with laws/articles of association."', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(15, 38, 2, 7, 0, 'Moderately High', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(16, 38, 2, 1, 6, '"- No injury or First Aid case\r\n- No or very low health effect\r\n-  No or Minimal morale impact"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(17, 38, 2, 0, 1, '1-20', 7, 'Critical', 79, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(18, 38, 2, 8, 0, 'High', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(19, 38, 2, 2, 1, '0.3 - <3 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(20, 38, 2, 9, 0, 'Very High', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(21, 38, 2, 2, 2, '0.1 - <1 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(22, 38, 2, 1, 2, '#00B050', 5, 'Non Critical', 43, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(23, 38, 2, 0, 2, '21-40', 7, 'Critical', 80, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(24, 38, 2, 10, 0, 'Extremely Likely', 2, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(25, 38, 2, 2, 3, '0.01 - < 0.1 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(26, 38, 2, 2, 4, 'Minor Effect', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(27, 38, 2, 2, 5, '"- Minor impact with short term recovery\r\n- Local media\r\n- Verbal complaints\r\n- Partly comply with laws/articles of association."', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(28, 38, 2, 2, 6, '"- Medical treatment or Restrict to work\r\n-  Low health effect\r\n- Short-term morale impact"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(29, 38, 2, 3, 1, '3 - <30 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(30, 38, 2, 3, 2, '1 - <10 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(31, 38, 2, 3, 3, '0.1 - <1 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(32, 38, 2, 3, 4, 'Moderate Effect', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(33, 38, 2, 3, 5, '"- Moderate impact with long term recovery\r\n- Regional media\r\n- Official letter complaint\r\n- Non-compliance with laws/articles of association"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(34, 38, 2, 1, 3, '#FFFF00', 5, 'Critical', 44, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(35, 38, 2, 0, 3, '41-60', 7, 'Critical', 81, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(36, 38, 2, 3, 6, '"- Loss time injury\r\n- Medium health effect\r\n- Long-term morale impact"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(37, 38, 2, 1, 4, '#FFFF00', 5, 'Critical', 45, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(38, 38, 2, 0, 4, '61-80', 7, 'Critical', 82, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(39, 38, 2, 4, 1, '30 - <300 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(40, 38, 2, 1, 5, '#FFFF00', 5, 'Critical', 46, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(41, 38, 2, 0, 5, '81-100', 7, 'Critical', 83, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(42, 38, 2, 4, 2, '10 - <100 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(43, 38, 2, 2, 1, '#00B050', 5, 'Non Critical', 47, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(44, 38, 2, 2, 2, '#FFFF00', 5, 'Critical', 48, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(45, 38, 2, 4, 3, '1 - <10 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(46, 38, 2, 2, 3, '#FFFF00', 5, 'Critical', 49, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(47, 38, 2, 4, 4, 'Major Effect', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(48, 38, 2, 2, 4, '#FFC000', 5, 'Critical', 50, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(49, 38, 2, 4, 5, '"- Major impact with national concern\r\n- National media\r\n- Customer less purchase\r\n- Violate the laws/ articles of association.\r\n"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(50, 38, 2, 0, 1, '"GPC \r(THB)"', 6, 'Critical', 36, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(51, 38, 2, 2, 5, '#FFC000', 5, 'Critical', 51, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(52, 38, 2, 4, 6, '"- Single fatality or Permanent total disabilities\r\n- High health effect\r\n- Protesters rally or official complaint"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(53, 38, 2, 0, 2, '" BU \r(THB)"', 6, 'Critical', 37, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(54, 38, 2, 5, 1, '>300 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(55, 38, 2, 3, 1, '#FFFF00', 5, 'Critical', 52, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(56, 38, 2, 0, 3, 'Small BU (THB)', 6, 'Critical', 38, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(57, 38, 2, 3, 2, '#FFFF00', 5, 'Critical', 53, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(58, 38, 2, 5, 2, '>100 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(59, 38, 2, 0, 4, 'Environment', 6, 'Critical', 39, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(60, 38, 2, 3, 3, '#FFC000', 5, 'Critical', 54, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(61, 38, 2, 5, 3, '>10 M', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(62, 38, 2, 0, 5, '"(Community, Reputation, \rCustomer, Law &Regulation)"', 6, 'Critical', 40, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(63, 38, 2, 3, 4, '#FF0000', 5, 'Critical', 55, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(64, 38, 2, 0, 6, '(Safety, Health, Morale)', 6, 'Critical', 41, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(65, 38, 2, 5, 4, 'Massive Effect', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(66, 38, 2, 3, 5, '#FF0000', 5, 'Critical', 56, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(67, 38, 2, 5, 5, '"- Massive impact with international concern\r\n- International media\r\n- Customer stop purchase\r\n- Violate the laws/ articles of association, and/or subject to order to dissolve the company\r\n"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(68, 38, 2, 4, 1, '#FFFF00', 5, 'Critical', 57, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(69, 38, 2, 5, 6, '"-  Many fatalities\r\n- High health effect\r\n- Employees or Contractors strike"', 1, 'Critical', NULL, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(70, 38, 2, 1, 0, '2', 4, 'Critical', 31, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(71, 38, 2, 4, 2, '#FFC000', 5, 'Critical', 58, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(72, 38, 2, 4, 3, '#FF0000', 5, 'Critical', 59, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(73, 38, 2, 4, 4, '#FF0000', 5, 'Critical', 60, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(74, 38, 2, 2, 0, '4', 4, 'Critical', 32, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(75, 38, 2, 4, 5, '#C00000', 5, 'Critical', 61, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(76, 38, 2, 3, 0, '6', 4, 'Critical', 33, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(77, 38, 2, 4, 0, '8', 4, 'Critical', 34, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(78, 38, 2, 5, 1, '#FFC000', 5, 'Critical', 62, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(79, 38, 2, 5, 2, '#FFC000', 5, 'Critical', 63, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(80, 38, 2, 5, 0, '10', 4, 'Critical', 35, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(81, 38, 2, 5, 3, '#FF0000', 5, 'Critical', 64, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(82, 38, 2, 5, 4, '#C00000', 5, 'Critical', 65, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(83, 38, 2, 5, 5, '#C00000', 5, 'Critical', 66, '2016-01-12 09:32:52', 1, NULL, NULL, 1, 2),
+(84, 40, 2, 8, 0, 'Can know unusual sign before failure occuring', 3, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(85, 40, 2, 10, 0, 'Can not know any sign before failure occuring', 3, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(86, 40, 2, 1, 1, '< 0.3 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(87, 40, 2, 0, 1, '1-20', 7, 'Critical', 79, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(88, 40, 2, 1, 2, '< 0.1 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(89, 40, 2, 1, 1, '#00B050', 5, 'Non Critical', 42, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(90, 40, 2, 0, 2, '21-40', 7, 'Critical', 80, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(91, 40, 2, 1, 3, '< 0.01 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(92, 40, 2, 0, 3, '41-60', 7, 'Critical', 81, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(93, 40, 2, 1, 4, 'No/Slight Effect', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(94, 40, 2, 0, 4, '61-80', 7, 'Critical', 82, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(95, 40, 2, 1, 5, '"- No or Slight impact to Community, Reputation and Customer\r\n- No fault or insignificant fault of complying with laws/articles of association."', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(96, 40, 2, 0, 5, '81-100', 7, 'Critical', 83, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(97, 40, 2, 1, 6, '"- No injury or First Aid case\r\n- No or very low health effect\r\n-  No or Minimal morale impact"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(98, 40, 2, 1, 2, '#00B050', 5, 'Non Critical', 43, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(99, 40, 2, 2, 1, '0.3 - <3 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(100, 40, 2, 1, 3, '#FFFF00', 5, 'Critical', 44, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(101, 40, 2, 2, 2, '0.1 - <1 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(102, 40, 2, 1, 4, '#FFFF00', 5, 'Critical', 45, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(103, 40, 2, 0, 1, '"GPC \r(THB)"', 6, 'Critical', 36, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(104, 40, 2, 2, 3, '0.01 - < 0.1 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(105, 40, 2, 1, 0, 'Extreme Unlikelihood', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(106, 40, 2, 1, 5, '#FFFF00', 5, 'Critical', 46, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(107, 40, 2, 0, 2, '" BU \r(THB)"', 6, 'Critical', 37, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(108, 40, 2, 2, 4, 'Minor Effect', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(109, 40, 2, 2, 1, '#00B050', 5, 'Non Critical', 47, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(110, 40, 2, 0, 3, 'Small BU (THB)', 6, 'Critical', 38, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(111, 40, 2, 2, 5, '"- Minor impact with short term recovery\r\n- Local media\r\n- Verbal complaints\r\n- Partly comply with laws/articles of association."', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(112, 40, 2, 2, 2, '#FFFF00', 5, 'Critical', 48, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(113, 40, 2, 0, 4, 'Environment', 6, 'Critical', 39, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(114, 40, 2, 2, 0, 'Remote likelihood', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(115, 40, 2, 2, 6, '"- Medical treatment or Restrict to work\r\n-  Low health effect\r\n- Short-term morale impact"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(116, 40, 2, 2, 3, '#FFFF00', 5, 'Critical', 49, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(117, 40, 2, 0, 5, '"(Community, Reputation, \rCustomer, Law &Regulation)"', 6, 'Critical', 40, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(118, 40, 2, 3, 1, '3 - <30 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(119, 40, 2, 2, 4, '#FFC000', 5, 'Critical', 50, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(120, 40, 2, 0, 6, '(Safety, Health, Morale)', 6, 'Critical', 41, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(121, 40, 2, 3, 2, '1 - <10 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(122, 40, 2, 2, 5, '#FFC000', 5, 'Critical', 51, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(123, 40, 2, 3, 3, '0.1 - <1 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(124, 40, 2, 3, 1, '#FFFF00', 5, 'Critical', 52, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(125, 40, 2, 3, 2, '#FFFF00', 5, 'Critical', 53, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(126, 40, 2, 3, 4, 'Moderate Effect', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(127, 40, 2, 1, 0, '2', 4, 'Critical', 31, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(128, 40, 2, 3, 0, 'Very low likelihood', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(129, 40, 2, 3, 3, '#FFC000', 5, 'Critical', 54, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(130, 40, 2, 3, 5, '"- Moderate impact with long term recovery\r\n- Regional media\r\n- Official letter complaint\r\n- Non-compliance with laws/articles of association"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(131, 40, 2, 3, 4, '#FF0000', 5, 'Critical', 55, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(132, 40, 2, 3, 6, '"- Loss time injury\r\n- Medium health effect\r\n- Long-term morale impact"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(133, 40, 2, 2, 0, '4', 4, 'Critical', 32, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(134, 40, 2, 4, 1, '30 - <300 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(135, 40, 2, 3, 5, '#FF0000', 5, 'Critical', 56, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(136, 40, 2, 3, 0, '6', 4, 'Critical', 33, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(137, 40, 2, 4, 2, '10 - <100 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(138, 40, 2, 4, 1, '#FFFF00', 5, 'Critical', 57, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(139, 40, 2, 4, 0, '8', 4, 'Critical', 34, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(140, 40, 2, 4, 2, '#FFC000', 5, 'Critical', 58, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(141, 40, 2, 4, 3, '1 - <10 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(142, 40, 2, 4, 0, 'Low likelihood', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(143, 40, 2, 5, 0, '10', 4, 'Critical', 35, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(144, 40, 2, 4, 3, '#FF0000', 5, 'Critical', 59, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(145, 40, 2, 4, 4, 'Major Effect', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(146, 40, 2, 4, 4, '#FF0000', 5, 'Critical', 60, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(147, 40, 2, 4, 5, '"- Major impact with national concern\r\n- National media\r\n- Customer less purchase\r\n- Violate the laws/ articles of association.\r\n"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(148, 40, 2, 4, 5, '#C00000', 5, 'Critical', 61, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(149, 40, 2, 4, 6, '"- Single fatality or Permanent total disabilities\r\n- High health effect\r\n- Protesters rally or official complaint"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(150, 40, 2, 5, 1, '#FFC000', 5, 'Critical', 62, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(151, 40, 2, 5, 1, '>300 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(152, 40, 2, 5, 2, '>100 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(153, 40, 2, 5, 2, '#FFC000', 5, 'Critical', 63, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(154, 40, 2, 5, 3, '#FF0000', 5, 'Critical', 64, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(155, 40, 2, 5, 3, '>10 M', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(156, 40, 2, 5, 4, '#C00000', 5, 'Critical', 65, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(157, 40, 2, 5, 4, 'Massive Effect', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(158, 40, 2, 5, 5, '#C00000', 5, 'Critical', 66, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(159, 40, 2, 5, 5, '"- Massive impact with international concern\r\n- International media\r\n- Customer stop purchase\r\n- Violate the laws/ articles of association, and/or subject to order to dissolve the company\r\n"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(160, 40, 2, 5, 6, '"-  Many fatalities\r\n- High health effect\r\n- Employees or Contractors strike"', 1, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(161, 40, 2, 5, 0, 'Moderate', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(162, 40, 2, 6, 0, 'Medium', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(163, 40, 2, 7, 0, 'Moderately High', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(164, 40, 2, 8, 0, 'High', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(165, 40, 2, 9, 0, 'Very High', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(166, 40, 2, 10, 0, 'Extremely Likely', 2, 'Critical', NULL, '2016-01-12 09:37:07', 1, NULL, NULL, 1, 2),
+(167, 13, 2, 1, 1, '#00B050', 5, 'Non Critical', 42, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(168, 13, 2, 1, 2, '#00B050', 5, 'Non Critical', 43, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(169, 13, 2, 1, 3, '#FFFF00', 5, 'Critical', 44, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(170, 13, 2, 0, 1, '1-20', 7, 'Critical', 79, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(171, 13, 2, 1, 4, '#FFFF00', 5, 'Critical', 45, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(172, 13, 2, 1, 5, '#FFFF00', 5, 'Critical', 46, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(173, 13, 2, 0, 2, '21-40', 7, 'Critical', 80, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(174, 13, 2, 2, 1, '#00B050', 5, 'Non Critical', 47, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(175, 13, 2, 2, 2, '#FFFF00', 5, 'Critical', 48, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(176, 13, 2, 0, 3, '41-60', 7, 'Critical', 81, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(177, 13, 2, 2, 3, '#FFFF00', 5, 'Critical', 49, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(178, 13, 2, 2, 4, '#FFC000', 5, 'Critical', 50, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(179, 13, 2, 0, 4, '61-80', 7, 'Critical', 82, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(180, 13, 2, 8, 0, 'Can know unusual sign before failure occuring', 3, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(181, 13, 2, 2, 5, '#FFC000', 5, 'Critical', 51, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(182, 13, 2, 3, 1, '#FFFF00', 5, 'Critical', 52, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(183, 13, 2, 0, 5, '81-100', 7, 'Critical', 83, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(184, 13, 2, 3, 2, '#FFFF00', 5, 'Critical', 53, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(185, 13, 2, 3, 3, '#FFC000', 5, 'Critical', 54, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(186, 13, 2, 3, 4, '#FF0000', 5, 'Critical', 55, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(187, 13, 2, 3, 5, '#FF0000', 5, 'Critical', 56, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(188, 13, 2, 4, 1, '#FFFF00', 5, 'Critical', 57, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(189, 13, 2, 4, 2, '#FFC000', 5, 'Critical', 58, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(190, 13, 2, 4, 3, '#FF0000', 5, 'Critical', 59, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(191, 13, 2, 4, 4, '#FF0000', 5, 'Critical', 60, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(192, 13, 2, 0, 1, '"GPC \r(THB)"', 6, 'Critical', 36, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(193, 13, 2, 10, 0, 'Can not know any sign before failure occuring', 3, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(194, 13, 2, 4, 5, '#C00000', 5, 'Critical', 61, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(195, 13, 2, 5, 1, '#FFC000', 5, 'Critical', 62, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(196, 13, 2, 0, 2, '" BU \r(THB)"', 6, 'Critical', 37, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(197, 13, 2, 5, 2, '#FFC000', 5, 'Critical', 63, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(198, 13, 2, 0, 3, 'Small BU (THB)', 6, 'Critical', 38, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(199, 13, 2, 5, 3, '#FF0000', 5, 'Critical', 64, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(200, 13, 2, 0, 4, 'Environment', 6, 'Critical', 39, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(201, 13, 2, 5, 4, '#C00000', 5, 'Critical', 65, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(202, 13, 2, 0, 5, '"(Community, Reputation, \rCustomer, Law &Regulation)"', 6, 'Critical', 40, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(203, 13, 2, 5, 5, '#C00000', 5, 'Critical', 66, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(204, 13, 2, 0, 6, '(Safety, Health, Morale)', 6, 'Critical', 41, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(205, 13, 2, 1, 0, '2', 4, 'Critical', 31, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(206, 13, 2, 2, 0, '4', 4, 'Critical', 32, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(207, 13, 2, 3, 0, '6', 4, 'Critical', 33, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(208, 13, 2, 4, 0, '8', 4, 'Critical', 34, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(209, 13, 2, 5, 0, '10', 4, 'Critical', 35, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(210, 13, 2, 1, 1, '< 0.3 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(211, 13, 2, 1, 2, '< 0.1 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(212, 13, 2, 1, 3, '< 0.01 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(213, 13, 2, 1, 4, 'No/Slight Effect', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(214, 13, 2, 1, 5, '"- No or Slight impact to Community, Reputation and Customer\r\n- No fault or insignificant fault of complying with laws/articles of association."', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(215, 13, 2, 1, 6, '"- No injury or First Aid case\r\n- No or very low health effect\r\n-  No or Minimal morale impact"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(216, 13, 2, 2, 1, '0.3 - <3 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(217, 13, 2, 2, 2, '0.1 - <1 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(218, 13, 2, 2, 3, '0.01 - < 0.1 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(219, 13, 2, 2, 4, 'Minor Effect', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(220, 13, 2, 2, 5, '"- Minor impact with short term recovery\r\n- Local media\r\n- Verbal complaints\r\n- Partly comply with laws/articles of association."', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(221, 13, 2, 2, 6, '"- Medical treatment or Restrict to work\r\n-  Low health effect\r\n- Short-term morale impact"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(222, 13, 2, 3, 1, '3 - <30 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(223, 13, 2, 3, 2, '1 - <10 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(224, 13, 2, 3, 3, '0.1 - <1 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(225, 13, 2, 1, 0, 'Extreme Unlikelihood', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(226, 13, 2, 3, 4, 'Moderate Effect', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(227, 13, 2, 2, 0, 'Remote likelihood', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(228, 13, 2, 3, 5, '"- Moderate impact with long term recovery\r\n- Regional media\r\n- Official letter complaint\r\n- Non-compliance with laws/articles of association"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(229, 13, 2, 3, 6, '"- Loss time injury\r\n- Medium health effect\r\n- Long-term morale impact"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(230, 13, 2, 3, 0, 'Very low likelihood', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(231, 13, 2, 4, 1, '30 - <300 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(232, 13, 2, 4, 2, '10 - <100 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(233, 13, 2, 4, 0, 'Low likelihood', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(234, 13, 2, 4, 3, '1 - <10 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(235, 13, 2, 4, 4, 'Major Effect', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(236, 13, 2, 5, 0, 'Moderate', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(237, 13, 2, 4, 5, '"- Major impact with national concern\r\n- National media\r\n- Customer less purchase\r\n- Violate the laws/ articles of association.\r\n"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(238, 13, 2, 4, 6, '"- Single fatality or Permanent total disabilities\r\n- High health effect\r\n- Protesters rally or official complaint"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(239, 13, 2, 6, 0, 'Medium', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(240, 13, 2, 5, 1, '>300 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(241, 13, 2, 5, 2, '>100 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(242, 13, 2, 7, 0, 'Moderately High', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(243, 13, 2, 5, 3, '>10 M', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(244, 13, 2, 5, 4, 'Massive Effect', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(245, 13, 2, 8, 0, 'High', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(246, 13, 2, 5, 5, '"- Massive impact with international concern\r\n- International media\r\n- Customer stop purchase\r\n- Violate the laws/ articles of association, and/or subject to order to dissolve the company\r\n"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(247, 13, 2, 9, 0, 'Very High', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(248, 13, 2, 5, 6, '"-  Many fatalities\r\n- High health effect\r\n- Employees or Contractors strike"', 1, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1),
+(249, 13, 2, 10, 0, 'Extremely Likely', 2, 'Critical', NULL, '2016-01-12 15:13:30', 1, NULL, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `asset_registers` (
   `project_id` int(10) unsigned NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `asset_registers`
@@ -133,7 +388,7 @@ INSERT INTO `asset_registers` (`id`, `parent`, `asset_name`, `description`, `cat
 (10, 1, 'POLYMER', '', NULL, NULL, 2, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:05:38', '2015-12-28 23:05:38'),
 (11, 1, 'REFINERY AND SHARE FACILITY', '', NULL, NULL, 2, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:05:46', '2015-12-28 23:05:46'),
 (12, 2, 'REFORMER', '', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:06:03', '2015-12-28 23:06:03'),
-(13, 2, 'AROMATICS', '', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:06:08', '2015-12-28 23:06:08'),
+(13, 2, '', 'AROMATICS', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', 13, 1, 1, 1, 1, '2015-12-28 23:06:08', '2016-01-12 08:13:30'),
 (14, 2, 'UTILITY', '', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:06:16', '2015-12-28 23:06:16'),
 (15, 13, 'ARO1 0320', '', NULL, NULL, 4, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:06:30', '2015-12-28 23:06:30'),
 (16, 13, 'ARO1 0370', '', NULL, NULL, 4, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:06:39', '2015-12-28 23:06:39'),
@@ -150,7 +405,25 @@ INSERT INTO `asset_registers` (`id`, `parent`, `asset_name`, `description`, `cat
 (27, 25, '320-C3 REFRIGERANT COMPRESSOR', '', NULL, NULL, 6, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2015-12-28 23:08:31', '2015-12-28 23:08:31'),
 (28, 27, 'COMPRESSOR UNIT', '', 1, 1, 7, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2016-01-11 23:20:25', '2016-01-11 23:20:25'),
 (29, 28, '0-320-C-003', '', NULL, NULL, 8, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 1, '2016-01-11 23:20:51', '2016-01-11 23:20:51'),
-(30, 0, 'Test', '', NULL, NULL, 1, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 1, '2016-01-11 23:37:59', '2016-01-11 23:38:23');
+(30, 0, 'Test', '', NULL, NULL, 1, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 1, '2016-01-11 23:37:59', '2016-01-11 23:38:23'),
+(31, 0, 'PTTLNG', 'Project RCM at pttlng', NULL, NULL, 1, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 1, 2, '2016-01-12 01:57:54', '2016-01-12 01:58:22'),
+(32, 0, 'Test', '', NULL, NULL, 1, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 2, '2016-01-12 02:10:03', '2016-01-12 02:10:17'),
+(33, 31, 'BOG', '', NULL, NULL, 2, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:10:13', '2016-01-12 02:10:13'),
+(34, 33, 'In tank', '', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 2, '2016-01-12 02:10:25', '2016-01-12 02:10:30'),
+(35, 31, 'Intank pump', '', NULL, NULL, 2, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:10:38', '2016-01-12 02:10:38'),
+(36, 31, 'HP pump', '', NULL, NULL, 2, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:10:53', '2016-01-12 02:10:53'),
+(37, 31, 'IA compressor', '', NULL, NULL, 2, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:12:09', '2016-01-12 02:12:09'),
+(38, 33, '', 'Boil off gas', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 1, 2, '2016-01-12 02:21:02', '2016-01-12 02:32:52'),
+(39, 33, '', 'Boil off gas', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 1, 2, '2016-01-12 02:21:10', '2016-01-12 02:33:45'),
+(40, 33, '', 'Boil off gas C', NULL, NULL, 3, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 1, 2, '2016-01-12 02:34:58', '2016-01-12 02:37:07'),
+(41, 40, 'Pump', '', NULL, NULL, 4, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 2, '2016-01-12 02:39:01', '2016-01-12 02:40:53'),
+(42, 41, 'seal', '', NULL, NULL, 5, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 2, '2016-01-12 02:39:10', '2016-01-12 02:39:39'),
+(43, 40, 'LNG - 0001', '', NULL, NULL, 4, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:41:15', '2016-01-12 02:41:15'),
+(44, 40, 'LNG - 003', 'test', NULL, NULL, 4, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 1, 2, '2016-01-12 02:41:25', '2016-01-12 02:44:08'),
+(45, 44, 'BOG compressor', '', NULL, NULL, 5, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 1, 0, 2, '2016-01-12 02:46:41', '2016-01-12 02:50:09'),
+(46, 44, 'BOG Compressor', '', NULL, NULL, 5, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:50:53', '2016-01-12 02:50:53'),
+(47, 44, 'BOG Compressor1', '', NULL, NULL, 5, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:51:06', '2016-01-12 02:51:06'),
+(48, 46, 'Pump', '', NULL, NULL, 6, 0, '', NULL, NULL, NULL, NULL, '#A0A0A0', NULL, 1, 0, 1, 2, '2016-01-12 02:51:13', '2016-01-12 02:51:13');
 
 -- --------------------------------------------------------
 
@@ -529,8 +802,8 @@ CREATE TABLE IF NOT EXISTS `complex` (
 --
 
 INSERT INTO `complex` (`id`, `name`, `created_at`, `updated_at`, `active`, `project_id`) VALUES
-(1, '4 x 4', '2015-12-07 05:46:33', '2015-12-07 05:46:42', 1, NULL),
-(2, '5 x 5', '2015-12-07 05:46:51', NULL, 1, NULL);
+(1, '4 * 4', '2015-12-07 05:46:33', '2015-12-07 05:46:42', 1, NULL),
+(2, '5 * 5', '2015-12-07 05:46:51', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -693,7 +966,7 @@ CREATE TABLE IF NOT EXISTS `members` (
 --
 
 INSERT INTO `members` (`id`, `email`, `name`, `username`, `password`, `role`, `active`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin@mail.com', 'Administrator', 'admin', '$2y$10$UMBBwNbOgRWb5DVy8llu8eV/kq01TJqyamCG02YY6.3sdQUsPLMgO', 3, 1, 'qIQC1eux4FfCpF4lifCYokPrrqt1D5QubmqonLZYUl305jUSC5gqkPOTSYiE', '2015-11-03 16:43:34', '2016-01-12 01:11:27');
+(1, 'admin@mail.com', 'Administrator', 'admin', '$2y$10$UMBBwNbOgRWb5DVy8llu8eV/kq01TJqyamCG02YY6.3sdQUsPLMgO', 3, 1, 'YAK5Dh9PjlBcaXGWRClXwiGwE3jS4fPp7sSY4VcjHJ8Abjs1uWViTImhEUM0', '2015-11-03 16:43:34', '2016-01-12 02:00:06');
 
 -- --------------------------------------------------------
 
@@ -745,7 +1018,17 @@ CREATE TABLE IF NOT EXISTS `package_assumptions` (
   `project_id` int(10) unsigned NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `package_assumptions`
+--
+
+INSERT INTO `package_assumptions` (`id`, `name`, `description`, `created_by`, `updated_by`, `active`, `project_id`, `created_at`, `updated_at`) VALUES
+(1, 'BOG compressor', 'Boil off gas', 1, 1, 0, 2, '2016-01-12 02:03:11', '2016-01-12 02:19:34'),
+(2, 'BOG compressor', 'test', 1, 1, 1, 2, '2016-01-12 02:45:19', '2016-01-12 02:45:32'),
+(3, 'LNG - 0001', 'test', 1, 0, 1, 2, '2016-01-12 02:46:06', '2016-01-12 02:46:06'),
+(4, 'BOG compressor', 'vvv', 1, 0, 1, 2, '2016-01-12 02:46:52', '2016-01-12 02:46:52');
 
 -- --------------------------------------------------------
 
@@ -762,14 +1045,16 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `active` int(11) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`id`, `name`, `member_id`, `created_by`, `updated_by`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'PTT GLOBAL CHEMICAL', 1, 1, 0, 1, '2015-12-28 23:00:25', '2015-12-28 23:00:25');
+(1, 'PTT GLOBAL CHEMICAL', 1, 1, 0, 1, '2015-12-28 23:00:25', '2015-12-28 23:00:25'),
+(2, 'Test', 1, 1, 0, 1, '2016-01-12 01:54:16', '2016-01-12 01:54:16'),
+(3, 'test 1', 1, 1, 0, 0, '2016-01-12 01:54:44', '2016-01-12 01:59:23');
 
 -- --------------------------------------------------------
 
@@ -1528,12 +1813,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `asset_complex_detail`
 --
 ALTER TABLE `asset_complex_detail`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=250;
 --
 -- AUTO_INCREMENT for table `asset_registers`
 --
 ALTER TABLE `asset_registers`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `basic_equipments`
 --
@@ -1563,12 +1848,12 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `package_assumptions`
 --
 ALTER TABLE `package_assumptions`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `ref_activity_status`
 --
