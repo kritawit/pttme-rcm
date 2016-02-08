@@ -43,8 +43,8 @@
                 <fieldset>
                 <div class="form-group">
                   {!! Form::label('questions','Non Critical Question : ',array('class'=>'col-lg-2 control-label')) !!}
-                        <div class="col-lg-4">
-                            {!! Form::text('questions',null,array('class'=>'form-control')) !!}
+                        <div class="col-lg-6">
+                            {!! Form::textarea('questions',null,array('class'=>'form-control','cols'=>'30','rows'=>'5')) !!}
                         </div>
                   </div>
                   <div class="form-group">
@@ -74,8 +74,8 @@
                       <tbody>
                         @foreach($noncriticalquestion as $list)
                         <tr>
-                            <td width="20"><input type="checkbox" value="{{ $list->id }}" name="active[]"></td>
-                            <td>{{ $list->questions }}</td>
+                            <td style="word-break:break-all;width:5%;"><input type="checkbox" value="{{ $list->id }}" name="active[]"></td>
+                            <td style="word-break:break-all;width:30%;">{{ $list->questions }}</td>
                             <td>{{ $list->members->name }}</td>
                             <td>{{ $list->created_at }}</td>
                             <td class="text-center">
@@ -120,9 +120,9 @@
     if (checked != null) {
       if(confirm("Are you sure you want to delete?")){
         $(':checkbox:checked[name^=active]').val(function() {
-          deleteSelect(this.value);
+          deleteSelect($(this).val());
         });
-        location.reload();
+        window.location.reload();
       }
     }else {
       alert('Please select!');

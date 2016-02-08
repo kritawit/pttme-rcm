@@ -130,7 +130,7 @@
         $(':checkbox:checked[name^=active]').val(function() {
           deleteSelect(this.value);
         });
-        location.reload();
+        window.location.reload();
       }
     }else {
       alert('Please select!');
