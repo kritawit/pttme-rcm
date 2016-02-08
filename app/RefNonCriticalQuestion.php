@@ -12,4 +12,8 @@ class RefNonCriticalQuestion extends Model {
     	'questions' => 'required'
     );
 
+    public function members(){
+    	return $this->belongsTo('App\Member','created_by');
+    }
+
 }

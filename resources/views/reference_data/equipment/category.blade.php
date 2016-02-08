@@ -57,10 +57,10 @@
                     <table id="tb-equipment" class="table table-hover">
                       <thead>
                         <tr>
-                            <th>Active</th>
-                            <th>Equipment Category</th>
-                            <th>Created By</th>
-                            <th>Created Date</th>
+                            <th class="text-center">Active</th>
+                            <th class="text-center">Equipment Category</th>
+                            <th class="text-center">Created By</th>
+                            <th class="text-center">Created Date</th>
                             <th class="text-center">Edit</th>
                             <th class="text-center">Delete</th>
                         </tr>

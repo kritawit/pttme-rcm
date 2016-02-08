@@ -10,4 +10,7 @@ class RefTaskType extends Model {
 
     public static $rules = array('description' => 'required');
 
+    public function members(){
+    	return $this->belongsTo('App\Member','created_by');
+    }
 }

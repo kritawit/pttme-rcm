@@ -12,4 +12,8 @@ class RefOrderType extends Model {
     	'description' => 'required',
     	'name'=>'required'
     );
+
+    public function members(){
+    	return $this->belongsTo('App\Member','created_by');
+    }
 }

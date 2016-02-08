@@ -17,7 +17,9 @@ class OrderTypeController extends Controller {
 
 	public function getIndex(){
 		$ordertype = RefOrderType::where('project_id',Session::get('project_id'))
-				->where('active',1)->get();
+				->where('active',1)
+				->orderBy('description')
+				->get();
 		return View::make('reference_data.order_type.index')->with('ordertype',$ordertype);
 	}
 

@@ -23,7 +23,9 @@ class TaskController extends Controller {
 	}
 	public function getInterval(){
 		$interval = RefTaskInterval::where('active','=',1)
-			->where('project_id','=',Session::get('project_id'))->get();
+			->where('project_id','=',Session::get('project_id'))
+			->orderBy('description')
+			->get();
 		return View::make('reference_data.task.interval')->with('intervals',$interval);
 	}
 	public function postInterval(){
@@ -87,7 +89,9 @@ class TaskController extends Controller {
 
 	public function getType(){
 		$type = RefTaskType::where('active','=',1)
-			->where('project_id','=',Session::get('project_id'))->get();
+			->where('project_id','=',Session::get('project_id'))
+			->orderBy('description')
+			->get();
 		return View::make('reference_data.task.type')->with('types',$type);
 	}
 
@@ -149,7 +153,9 @@ class TaskController extends Controller {
 // List
 	public function getList(){
 		$list = RefTaskList::where('active','=',1)
-			->where('project_id','=',Session::get('project_id'))->get();
+			->where('project_id','=',Session::get('project_id'))
+			->orderBy('description')
+			->get();
 		return View::make('reference_data.task.list')->with('lists',$list);
 	}
 

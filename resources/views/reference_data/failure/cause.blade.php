@@ -57,8 +57,10 @@
                     <table id="tb-failure-cause" class="table table-hover">
                       <thead>
                         <tr>
-                            <th>Active</th>
+                            <th class="text-center">Active</th>
                             <th class="text-center">Failure Cause</th>
+                            <th class="text-center">Created By</th>
+                            <th class="text-center">Created Date</th>
                             <th class="text-center">Edit</th>
                             <th class="text-center">Delete</th>
                         </tr>
@@ -68,6 +70,8 @@
                         <tr>
                             <td width="20"><input type="checkbox" value="{{ $cause->id }}" name="active[]"></td>
                             <td>{{ $cause->description }}</td>
+                            <td>{{ $cause->members->name }}</td>
+                            <td>{{ $cause->created_at }}</td>
                             <td class="text-center">
                                 <a href="#" onclick="getEdit({{$cause->id}});"><span class="fa fa-edit text-warning"></span></a>
                             </td>

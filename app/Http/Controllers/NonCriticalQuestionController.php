@@ -24,6 +24,7 @@ class NonCriticalQuestionController extends Controller {
 	public function getIndex(){
 		$noncriticalquestion = RefNonCriticalQuestion::where('project_id','=',Session::get('project_id'))
 				->where('active','=',1)
+				->orderBy('questions')
 				->get();
 		return View::make('reference_data.non_critical_question.index')->with('noncriticalquestion',$noncriticalquestion);
 	}

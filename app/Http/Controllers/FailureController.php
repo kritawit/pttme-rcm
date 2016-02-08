@@ -23,6 +23,7 @@ class FailureController extends Controller {
 	public function getMode(){
 		$mode = RefFailureMode::where('project_id','=',Session::get('project_id'))
 				->where('active','=',1)
+				->orderBy('description')
 				->get();
 		return View::make('reference_data.failure.mode')->with('modes',$mode);
 	}
@@ -87,6 +88,7 @@ class FailureController extends Controller {
 	public function getCause(){
 		$mode = RefFailureCause::where('project_id','=',Session::get('project_id'))
 				->where('active','=',1)
+				->orderBy('description')
 				->get();
 		return View::make('reference_data.failure.cause')->with('causes',$mode);
 	}

@@ -72,6 +72,8 @@
                           <th>Active</th>
                           <th class="text-center">Name</th>
                           <th class="text-center">Description</th>
+                          <th class="text-center">Created By</th>
+                          <th class="text-center">Created Date</th>
                           <th class="text-center">Edit</th>
                           <th class="text-center">Delete</th>
                       </tr>
@@ -82,6 +84,8 @@
                             <td width="20"><input type="checkbox" value="{{ $list->id }}" name="active[]"></td>
                             <td class="text-center">{{ $list->name }}</td>
                             <td>{{ $list->description }}</td>
+                            <td>{{ $list->members->name }}</td>
+                            <td>{{ $list->created_at }}</td>
                             <td class="text-center">
                                 <a href="#" onclick="getEdit({{$list->id}});"><span class="fa fa-edit text-warning"></span></a>
                             </td>

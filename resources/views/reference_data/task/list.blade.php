@@ -57,8 +57,10 @@
                     <table id="tb-task-list" class="table table-hover">
                       <thead>
                       <tr>
-                          <th>Active</th>
+                          <th class="text-center">Active</th>
                           <th class="text-center">Task List</th>
+                          <th class="text-center">Created By</th>
+                          <th class="text-center">Created Date</th>
                           <th class="text-center">Edit</th>
                           <th class="text-center">Delete</th>
                       </tr>
@@ -68,6 +70,8 @@
                         <tr>
                             <td width="20"><input type="checkbox" value="{{ $list->id }}" name="active[]"></td>
                             <td>{{ $list->description }}</td>
+                            <td>{{ $list->members->name }}</td>
+                            <td>{{ $list->created_at }}</td>
                             <td class="text-center">
                                 <a href="#" onclick="getEdit({{$list->id}});"><span class="fa fa-edit text-warning"></span></a>
                             </td>

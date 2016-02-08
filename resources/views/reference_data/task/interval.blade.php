@@ -64,9 +64,11 @@
                     <table id="tb-task-interval" class="table table-hover">
                       <thead>
                       <tr>
-                          <th>Active</th>
+                          <th class="text-center">Active</th>
                           <th class="text-center">Interval</th>
                           <th class="text-center">Description</th>
+                          <th class="text-center">Created By</th>
+                          <th class="text-center">Created Date</th>
                           <th class="text-center">Edit</th>
                           <th class="text-center">Delete</th>
                       </tr>
@@ -77,6 +79,8 @@
                             <td width="20"><input type="checkbox" value="{{ $interval->id }}" name="active[]"></td>
                             <td>{{ $interval->interval }}</td>
                             <td>{{ $interval->description }}</td>
+                            <td>{{ $interval->members->name }}</td>
+                            <td>{{ $interval->created_at }}</td>
                             <td class="text-center">
                                 <a href="#" onclick="getEdit({{$interval->id}});"><span class="fa fa-edit text-warning"></span></a>
                             </td>

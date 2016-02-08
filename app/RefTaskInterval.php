@@ -13,4 +13,8 @@ class RefTaskInterval extends Model {
     	'description' => 'required'
     );
 
+    public function members(){
+    	return $this->belongsTo('App\Member','created_by');
+    }
+
 }
