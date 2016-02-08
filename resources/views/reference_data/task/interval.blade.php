@@ -58,10 +58,13 @@
               {!! Form::close() !!}
              	<hr>
               <div class="col-sm-12">
+              <a href="#" class="btn btn-danger" onclick="deleteRef();return false;"><i class="fa fa-trash-o"></i> Delete Selected</a>
+              <hr>
                 <div>
                     <table id="tb-task-interval" class="table table-hover">
                       <thead>
                       <tr>
+                          <th>Active</th>
                           <th class="text-center">Interval</th>
                           <th class="text-center">Description</th>
                           <th class="text-center">Edit</th>
@@ -71,6 +74,7 @@
                       <tbody>
                         @foreach($intervals as $interval)
                         <tr>
+                            <td width="20"><input type="checkbox" value="{{ $interval->id }}" name="active[]"></td>
                             <td>{{ $interval->interval }}</td>
                             <td>{{ $interval->description }}</td>
                             <td class="text-center">
@@ -108,6 +112,20 @@
 	$(function() {
 		$("#tb-task-interval").DataTable();
 	});
+  function deleteRef() {
+    var checked = new Array();
+    checked = $(':checkbox:checked[name^=active]').val();
+    if (checked != null) {
+      if(confirm("Are you sure you want to delete?")){
+        $(':checkbox:checked[name^=active]').val(function() {
+          deleteSelect(this.value);
+        });
+        location.reload();
+      }
+    }else {
+      alert('Please select!');
+    }
+  }
   function getEdit(id){
     $.ajax({
       url: '{{url()}}/reference-data/task/editinterval',
@@ -134,6 +152,13 @@
       }
       });
     }
+  }
+  function deleteSelect(id){
+    $.ajax({
+      url: '{{url()}}/reference-data/task/destroyinterval',
+      type: 'POST',
+      data: {'id':id, '_token': $('input[name=_token]').val()}
+    });
   }
 	</script>
 @endsection

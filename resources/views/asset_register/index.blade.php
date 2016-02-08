@@ -31,35 +31,45 @@
         </ul>
     </div>
     @endif
+    @if(Session::has('message_import'))
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <p>The Following Success have occurred:</p>
+        <ul>
+        <li>{{ Session::get('message_import') }}</li>
+        </ul>
+    </div>
+    @endif
     <div class="row">
-        <div class="col-sm-12">
+        {{-- <div class="col-sm-12"> --}}
             <div class="box box-warning">
                 <div class="box-header with-border">
                   <h3 class="box-title"><button type="button" id="create_node" class="btn btn-success"><i class="fa fa-plus"></i> New Asset Hierarchy</button></h3>
+                  <h3 class="box-title"><button type="button" id="import_node" class="btn btn-warning"><i class="fa fa-file-text"></i> Import Asset Hierarchy</button></h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                   </div>
                 </div>
                 <div class="box-body" id="tree-content">
-                    <ul id="tt" class="easyui-tree" data-options="url: '{{url()}}/asset-register/tree',
+                    <div class="col-lg-3" style="overflow:scroll; height:900px;">
+                        <ul id="tt" class="easyui-tree" data-options="url: '{{url()}}/asset-register/tree',
                     method: 'get',
                     animate: true">
-                    </ul>
-                    <div id="mm" class="easyui-menu" style="width:120px;">
-                    <div onclick="append();" data-options="iconCls:'icon-add'">Create</div>
-                    <div onclick="removeit();" data-options="iconCls:'icon-remove'">Remove</div>
-                    <div class="menu-sep"></div>
-                    <div onclick="expand()">Expand</div>
-                    <div onclick="collapse()">Collapse</div>
+                        </ul>
+                        <div id="mm" class="easyui-menu" style="width:120px;">
+                        <div onclick="append();" data-options="iconCls:'icon-add'">Create</div>
+                        <div onclick="removeit();" data-options="iconCls:'icon-remove'">Remove</div>
+                        <div class="menu-sep"></div>
+                        <div onclick="expand()">Expand</div>
+                        <div onclick="collapse()">Collapse</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9" id="control-panel" style="overflow:scroll; height:900px;">
+                        
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" id="control-panel">
-
-        </div>
+        {{-- </div> --}}
     </div>
         <div class="modal fade" id="modal-node">
             <div class="modal-dialog modal-sm">
@@ -70,12 +80,16 @@
                     </div>
                 <div class="modal-body">
                 <input type="hidden" id="level_node" >
-                <form id="frmNode" class="form-horizontal" method="POST">
+                <form id="frmNode" class="form-horizontal" onsubmit="savenode();">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <fieldset>
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <input type="hidden" name="node_id" id="node_id">
-                        <input type="text" name="asset_name" id="asset_name" class="form-control">
+                    <input type="hidden" name="node_id_asset" id="node_id_asset">
+                    <input type="text" name="asset_name" id="asset_name" class="form-control">
+                    </div>
+                    <div class="col-lg-12" id="bss_unit">
+
                     </div>
                 </div>
                 <div id="select-equip">
@@ -84,7 +98,7 @@
                 </fieldset>
                 </form>
                 <div class="modal-footer">
-                    <button type="button" onclick="savenode();" class="btn btn-success">Create</button>
+                    <button type="button" onclick="savenode();return false;" class="btn btn-success">Create</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 </div>
@@ -116,6 +130,34 @@
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
+        
+        {{-- Modal Import  --}}
+    <div class="modal fade" id="modal-import">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Import Asset Hierarchy</h4>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(array('url'=>'asset-register/importasset','class'=>'form-horizontal','role'=>'form','method'=>'POST', 'files'=>true,'id'=>'frmImport')) !!}
+                    <fieldset>
+                        <div class="form-group">
+                            {!! Form::label('name','File Excel : ',array('class'=>'col-lg-3 control-label')) !!}
+                                <div class="col-lg-6">
+                                    {!! Form::file('import',['class'=>'form-control','id' => 'import']) !!}
+                                </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-file-text"></i> Import</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                {!! Form::close() !!}
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     </section>
     @include('include.normal-js')
@@ -156,6 +198,7 @@
                     dataType:'json',
                     success:function(data){
                         var l = data[0].level;
+                        getpropertieslevel(data[0].level);
                     }
                 });
 
@@ -168,22 +211,45 @@
         });
     });
 
+    function getpropertieslevel(level){
+        if (level == 1) {
+            $.ajax({
+                url: '{{url()}}/asset-register/propertieslevel',
+                type: 'GET',
+                data: {
+                    level: level
+                },
+                success:function(data){
+                    $("#bss_unit").html(data);
+                }
+            });
+        }else{
+            $("#bss_unit").html('');
+        }
+    }
+
         $("#create_node").click(function(event) {
             $("#node_name").val('');
             $("#modal-newnode").modal('show');
             $("#node_name").focus();
         });
 
+        $("#import_node").click(function(event) {
+            $("#modal-import").modal('show');
+        });
+
         function savenewnode(){
             if ($("#node_name").val()!='') {
-                $.ajax({
+                    $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     url: '{{url()}}/asset-register/addnode',
-                type: 'POST',
-                data: {node: $("#node_name").val()},
-                success:function(data){
+                    type: 'POST',
+                    data: {
+                        node: $("#node_name").val(),
+                    },
+                    success:function(data){
                     if(data === 'success'){
                         $("#node_name").val('');
                         $("#modal-newnode").modal('hide');
@@ -192,8 +258,8 @@
                         $("#modal-newnode").modal('hide');
                         alert('save node fail!');
                     }
-                }
-                });
+                    }
+                    });
             }else{
                 alert('node name is valid!');
                 $("#node_name").focus();
@@ -261,8 +327,27 @@
 
         function savenode(){
             if($("#asset_name").val() != ""){
-                if ($("#level_node").val()==6) {
+                if ($("#level_node").val()==7) {
                     if (checkFormEquip()) {
+                        $("#modal-node").modal('hide');
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: '{{url()}}/asset-register/addsubnode',
+                            type: 'POST',
+                            data: $("#frmNode").serialize(),
+                            success:function(data){
+                                if(data === 'success'){
+                                    $("#tt").tree('reload');
+                                }else if(data === 'fail'){
+                                    alert('add node fail!');
+                                }
+                            }
+                        });
+                    }
+                }else if($("#level_node").val()==1){
+                    if (checkFormLevelTwo()) {
                         $("#modal-node").modal('hide');
                         $.ajax({
                             headers: {
@@ -304,15 +389,17 @@
             }
         }
 
+
         function append(){
             var t = $('#tt');
             var node = t.tree('getSelected');
             if (checkLevel(node.id)==true) {
                 $("#modal-node").modal('show');
             }
+            
             $("#title-name").html(node.text);
             $("#asset_name").val('');
-            $("#node_id").val(node.id);
+            $("#node_id_asset").val(node.id);
         }
 
         function removeit(){
@@ -334,6 +421,21 @@
                 }
             });
         }
+
+    function checkFormLevelTwo(){
+        if ($("#asset_name").val()=='') {
+            alert('Asset name invalid !');
+            $("#asset_name").focus();
+            return false;
+        }else if ($("#business_unit_type_colums").val()=='') {
+            alert('Business Unit Type invalid !');
+            $("#business_unit_type_colums").focus();
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     function collapse(){
         var node = $('#tt').tree('getSelected');
         $('#tt').tree('collapse',node.target);
@@ -355,10 +457,14 @@
             success:function(data){
                 if (data[0].level < 8) {
                     $("#modal-node").modal('show');
-                    if (data[0].level == 6) {
+                    if (data[0].level == 7) {
                         $("#level_node").val(data[0].level);
                         $("#select-equip").load('{{url()}}/asset-register/equiponnode');
+                    }else if(data[0].level==1){
+                        $("#level_node").val(data[0].level);
+                        $("#select-equip").html('');
                     }else{
+                        $("#level_node").val(data[0].level);
                         $("#select-equip").html('');
                     }
                     return true;
@@ -370,7 +476,7 @@
         });
     }
 
-        function loadformlevel(id,level,name){
+    function loadformlevel(id,level,name){
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

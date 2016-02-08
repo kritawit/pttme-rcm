@@ -137,6 +137,9 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Barryvdh\DomPDF\ServiceProvider',
+		'Chumper\Zipper\ZipperServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -196,6 +199,9 @@ return [
 		'Form'=> 'Illuminate\Html\FormFacade',
 		'HTML'=> 'Illuminate\Html\HtmlFacade',
 		'Image'	=>	'Intervention\Image\Facades\Image',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'PDF' => 'Barryvdh\DomPDF\Facade',
+		'Zipper' => 'Chumper\Zipper\Zipper',
 	],
 
 ];

@@ -31,4 +31,6 @@ Route::controller('package-assumption','PackageAssumptionController');
 Route::controller('reference-data/equipment','EquipmentController');
 Route::controller('reference-data/task','TaskController');
 Route::controller('reference-data/failure','FailureController');
+Route::controller('reference-data/non-critical-question','NonCriticalQuestionController');
+Route::controller('reference-data/order-type','OrderTypeController');
 Route::controller('/','Auth\AuthController');

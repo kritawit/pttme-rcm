@@ -9,6 +9,6 @@ class Project extends Model {
 	protected $fillable = array('id','name','member_id','active', 'created_by', 'updated_by');
 
     public static $rules = array(
-    	'name' => 'required|unique:projects'
+    	'name' => 'required'
     );
 }

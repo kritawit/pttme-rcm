@@ -11,6 +11,4 @@ class PackageAssumption extends Model {
     public static $rules = array('name' => 'required', 'description' => 'required');
 
 
-    
-
 }

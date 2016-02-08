@@ -18,8 +18,8 @@
 				<td bgcolor="{{$bs->color}}">{{$bs->failure_effect}}</td>
 				<td>{{$bs->rpn}}</td>
 				<td>
-					<a href="#" onclick="getformdetail({{$bs->id}},{{$bs->node}});return false;">FMECA</a> / 
-					<a href="#" onclick="getTaskSelection();return false;">Task Selection</a>
+					<a href="#" onclick="getformdetail({{$bs->id}},{{$bs->node}});return false;">FMECA</a> /
+					<a href="#" onclick="getTaskSelection({{$bs->id}});return false;">Task Selection</a>
 				</td>
 			</tr>
 		@endforeach

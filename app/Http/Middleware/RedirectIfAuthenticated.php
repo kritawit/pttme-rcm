@@ -35,7 +35,7 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/dash-board'));
+			return new RedirectResponse(url('/login'));
 		}
 
 		return $next($request);

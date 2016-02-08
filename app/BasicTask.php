@@ -12,9 +12,10 @@ class BasicTask extends Model {
     	'cause_id',
     	'type_id',
     	'active',
+        'type_use',
     	'list_id',
     	'created_by',
-    	'updated_by'
+    	'updated_by','project_id'
     );
 
     public static $rules = array(

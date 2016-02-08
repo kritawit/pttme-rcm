@@ -26,7 +26,7 @@ class EquipmentController extends Controller {
 
 		return View::make('reference_data.equipment.category')
 			->with('category',RefCategory::where('project_id','=',Session::get('project_id'))->
-				where('active','=',1)->get());
+				where('active','=',1)->orderBy('description')->get());
 	}
 
 	public function postCategory(){
@@ -85,6 +85,7 @@ class EquipmentController extends Controller {
 		return View::make('reference_data.equipment.type')
 			->with('types',RefType::where('project_id','=',Session::get('project_id'))
 				->where('active','=',1)
+				->orderBy('description')
 				->get());
 	}
 

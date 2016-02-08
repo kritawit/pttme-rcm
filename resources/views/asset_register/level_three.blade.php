@@ -1,13 +1,7 @@
-<div class="box box-warning">
-    <div class="box-header with-border">
-      <h3 class="box-title">Informations</h3>
-      <div class="box-tools pull-right">
-      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-      </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
-  <div class="box-body" >
+  <input type="hidden" id="bss_unit" name="bss_unit" value="{{$business_unit}}">
   <input type="hidden" name="status" id="status" value="{{$status}}">
   <input type="hidden" name="node_id" id="node_id" value="{{$node}}">
+  <input type="hidden" name="node_id_complex" id="node_id_complex" value="{{$node}}">
   <form id="frmDetailNode" method="post" class="form-horizontal" role="form">
   <div class="row">
   <div class="col-sm-6">
@@ -87,10 +81,8 @@
 
     </div>
   </div>
-  </div><!-- /.box-body -->
-</div><!-- /.box -->
-<div class="modal modal-example-sm fade" id="modal-color">
-  <div class="modal-dialog modal-sm">
+<div class="modal fade" id="modal-color">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -101,18 +93,71 @@
         <input type="hidden" name="com_id">
         <input type="hidden" name="color_id">
         <input type="hidden" name="nd_id" value="{{$node}}">
-        <div class="radio">
-          <label>
-            <input type="radio" name="ref1" id="input" value="Non Critical" checked="checked">
-            Non Critical
-          </label>
-          <label>
-            <input type="radio" name="ref1" id="input" value="Critical">
-            Critical
-          </label>
-        </div>
-        <label for="color">Select color : </label>
-        <input name="color" class="form-control my-colorpicker1 colorpicker-element">
+        <input type="hidden" class="form-control" name="color" id="color">
+        <label for="" class="control-label">Description</label>
+        <input type="text" class="form-control" name="ref1" id="ref1" value="" placeholder="">
+        <label for="" class="control-label">Question</label>
+        <select name="question" id="question" class="form-control">
+          <option value="1">Yes</option>
+          <option value="2">No</option>
+        </select>
+        <br>
+        <table class="display" width="100%" id="tb_color">
+          <thead>
+            <tr>
+              <th>Colour</th>
+              <th>Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($color as $c): ?>
+              <tr>
+                <td bgcolor="{{$c->description}}" style="background-color:{{$c->description}}"></td>
+                <td>{{$c->description}}</td>
+              </tr>
+            <?php endforeach ?>
+            <tr>
+              <td bgcolor="#000099" style="background-color:#000099"></td>
+              <td>#000099</td>
+            </tr>
+            <tr>
+              <td bgcolor="#006600" style="background-color:#006600"></td>
+              <td>#006600</td>
+            </tr>
+            <tr>
+              <td bgcolor="#0099FF" style="background-color:#0099FF"></td>
+              <td>#0099FF</td>
+            </tr>
+            <tr>
+              <td bgcolor="#00FF00" style="background-color:#00FF00"></td>
+              <td>#00FF00</td>
+            </tr>
+            <tr>
+              <td bgcolor="#00FFFF" style="background-color:#00FFFF"></td>
+              <td>#00FFFF</td>
+            </tr>
+            <tr>
+              <td bgcolor="#808000" style="background-color:#808000"></td>
+              <td>#808000</td>
+            </tr>
+            <tr>
+              <td bgcolor="#CC00FF" style="background-color:#CC00FF"></td>
+              <td>#CC00FF</td>
+            </tr>
+            <tr>
+              <td bgcolor="#FF6600" style="background-color:#FF6600"></td>
+              <td>#FF6600</td>
+            </tr>
+            <tr>
+              <td bgcolor="#FF6699" style="background-color:#FF6699"></td>
+              <td>#FF6699</td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFF00" style="background-color:#FFFF00"></td>
+              <td>#FFFF00</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" id="savecolor" class="btn btn-primary"><i class="fa fa-save"></i>  Save changes</button>
@@ -125,7 +170,26 @@
 {!! HTML::script('public/plugins/colorpicker/bootstrap-colorpicker.min.js') !!}
 {!! HTML::script('public/js/ptt-rcm.js') !!}
 <script type="text/javascript">
+  var selected_color = null;
    $(document).ready(function() {
+
+    var table = $("#tb_color").DataTable();
+    $('#tb_color tbody').on( 'click', 'tr', function () {
+          if ($(this).hasClass('selected') ) {
+              $(this).removeClass('selected');
+              $("#color").val('');
+          }else{
+              table.$('tr.selected').removeClass('selected');
+              $(this).addClass('selected');
+          }
+          var d = new Array();
+          d = table.rows('.selected').data().toArray();
+          selected_color = d[0][1];
+          $("#color").val(selected_color);
+    });
+
+
+    
     var com_id = $('#complex_id').val();
     if (com_id != '') {
       loadcolordetail(com_id);
@@ -137,27 +201,33 @@
     });
     $(".my-colorpicker1").colorpicker();
     $('#complex_id').change(function() {
-      var data_type = $("input[type='radio'][name='data_type']:checked").val();
-      if (data_type==1) {
-        // $("#saveall").attr('disabled', true);
-        // 1 = Default
-        loadcolordetail($(this).val());
-        loadcomplexdetail($(this).val());
-      }else if(data_type==2){
-        loadcolordetail($(this).val());
-        loadcomplexdetail($(this).val());
-        setTimeout(function(){
-          $(".conseq").val('');
-          $(".conseq").attr('readonly', false);
-          $(".occe").attr('readonly', false);
-          $(".det").attr('readonly', false);
+        if ($(this).val()==1||$(this).val()==2) {
+          document.getElementById('custom').checked = true;
+        }else{
+          document.getElementById('default').checked = true;
+        }
+
+        var data_type = $("input[type='radio'][name='data_type']:checked").val();
+        if (data_type==1) {
+          // $("#saveall").attr('disabled', true);
+          // 1 = Default
+          loadcolordetail($(this).val());
+          loadcomplexdetail($(this).val());
+          }else if(data_type==2){
+          loadcolordetail($(this).val());
+          loadcomplexdetail($(this).val());
+          setTimeout(function(){
+            $(".conseq").val('');
+            $(".conseq").attr('readonly', false);
+            $(".occe").attr('readonly', false);
+            $(".det").attr('readonly', false);
           // $("#saveall").attr('disabled', false);
-        },3000);
+          },3000);
         // 2 = Custom
-      }else{
-        $("#color_detail").remove();
-        $("#complex_detail").remove();
-      }
+        }else{
+          $("#color_detail").remove();
+          $("#complex_detail").remove();
+        }
 
     });
 
@@ -179,8 +249,9 @@
     });
 
     $("#savecolor").click(function(event) {
-      setdetail();
-      $.ajax({
+      if(checkFormColor()){
+        setdetail();
+        $.ajax({
         url: '{{url()}}/asset-register/updatecolor',
         type: 'POST',
         data: $("#frmcolor").serialize(),
@@ -195,17 +266,33 @@
           }
         }
       });
+      }
     });
 
   });
 
+  function checkFormColor(){
+    if ($("#color").val()=='') {
+      alert('Please select color!');
+      return false;
+    }else if ($("#ref1").val()=='') {
+      alert('Description invalid!');
+      $("#ref1").focus();
+      return false;
+    }else{
+      return true;
+    }
+  }
+
   function loadcomplexdetail(complex_id){
+
     $.ajax({
             url: '{{url()}}/asset-register/complexform',
             type: 'GET',
             data: {
               complex_id: complex_id,
               node_id:$("#node_id").val(),
+              bss_unit: $("#bss_unit").val(),
             },
             success:function(data){
               $("#complex_detail").html(data);
@@ -227,10 +314,12 @@
     });
   }
 
-  function opencolor(col,com_id){
+  function opencolor(col,com_id,description,ref1){
     var data_type = $("input[type='radio'][name='data_type']:checked").val();
     if (data_type == 2) {
       $("input[name=com_id]").val(com_id);
+      $("input[name=ref1]").val(ref1);
+      $("input[name=color]").val(description);
       $("input[name=color_id]").val(col);
       $("#modal-color").modal('show');
     }
@@ -240,7 +329,7 @@
     $.ajax({
       url: '{{url()}}/asset-register/savecompnode',
       type: 'POST',
-      data: {node_id: $("#node_id").val()},
+      data: {node_id: $("#node_id_complex").val()},
       success:function(data){
         console.log("update complex node : "+data);
       }
@@ -259,9 +348,6 @@
     var rs = true;
     d = $("#frmDetailNode").serializeArray();
     for (var i = 1; i < d.length; i++) {
-      if (d[i].name==='description') {
-        if (d[i].value == '') {rs = false;}
-      }
       if (d[i].name==='asset_name') {
         if (d[i].value == '') {rs = false;}
       }
@@ -306,7 +392,8 @@
       type: 'POST',
       data: {
         node_id: $("#node_id").val(),
-        com_id:$("#complex_id").val(),
+        com_id: $("#complex_id").val(),
+        bss_unit : $("#bss_unit").val(),
       },
       success:function(data){
         console.log(data);

@@ -51,10 +51,13 @@
               {!! Form::close() !!}
               <hr>
               <div class="col-sm-12">
+              <a href="#" class="btn btn-danger" onclick="deleteRef();return false;"><i class="fa fa-trash-o"></i> Delete Selected</a>
+              <hr>
                 <div>
                     <table id="tb-equipment-part" class="table table-hover">
                       <thead>
                         <tr>
+                            <th>Active</th>
                             <th class="text-center">Equipment Part</th>
                             <th class="text-center">Edit</th>
                             <th class="text-center">Delete</th>
@@ -63,6 +66,7 @@
                       <tbody>
                         @foreach($parts as $part)
                         <tr>
+                            <td width="20"><input type="checkbox" value="{{ $part->id }}" name="active[]"></td>
                             <td>{{ $part->description }}</td>
                             <td class="text-center">
                                <a href="#" onclick="getEdit({{$part->id}});"><span class="fa fa-edit text-warning"></span></a>
@@ -99,6 +103,21 @@
   $(function() {
     $("#tb-equipment-part").DataTable();
   });
+
+  function deleteRef() {
+    var checked = new Array();
+    checked = $(':checkbox:checked[name^=active]').val();
+    if (checked != null) {
+      if(confirm("Are you sure you want to delete?")){
+        $(':checkbox:checked[name^=active]').val(function() {
+          deleteSelect(this.value);
+        });
+        location.reload();
+      }
+    }else {
+      alert('Please select!');
+    }
+  }
   function getEdit(id){
     $.ajax({
       url: '{{url()}}/reference-data/equipment/editpart',
@@ -125,6 +144,13 @@
       }
       });
     }
+  }
+  function deleteSelect(id){
+    $.ajax({
+      url: '{{url()}}/reference-data/equipment/destroypart',
+      type: 'POST',
+      data: {'id':id, '_token': $('input[name=_token]').val()}
+      });
   }
   </script>
 @stop

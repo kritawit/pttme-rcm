@@ -9,7 +9,7 @@ class BasicEquipment extends Model
     protected $table = 'basic_equipments';
 
     protected $fillable = array(
-    	'id', 'category_id', 'type_id','active', 'part_id','created_by', 'updated_by');
+    	'id', 'category_id', 'type_id','type_use','active', 'part_id','created_by','project_id', 'updated_by');
 
     public static $rules = array(
     	'category_id' => 'required',

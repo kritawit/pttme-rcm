@@ -1,0 +1,7 @@
+"task_selection_id","node","asset_basic_failure_id","failure_effect_id","evident_id","order_type_id","interval_num","interval","basic_task_id","activity_status_id","activity_detail","created_by","updated_by","created_at","updated_at","active","project_id"
+"5","71","36","2","1","27","250","SS","47","2","zxcvdsfdfsdfsdfsdfsdf","1","","2016-01-26 21:46:22","","1","27"
+"19","71","36","3","1","28","120","SS","47","1","sdasdasdasdasd","1","","2016-01-28 22:34:43","","1","27"
+"20","71","36","1","1","28","120","SS","47","1","sdasdasdasdasd","1","","2016-01-28 22:34:53","","1","27"
+"21","188","52","4","1","28","150","SS","44","1","dsfsdfdsfsdf","1","","2016-01-28 22:37:47","","1","27"
+"22","188","52","1","2","27","200","HR","44","1","dsfsdfdsfsdf","1","","2016-01-28 22:38:03","","1","27"
+"23","71","54","2","1","28","33","HR","47","2","sdasdasdasd","1","","2016-01-29 00:28:44","","1","27"

@@ -23,9 +23,9 @@ class AssetRegister extends Model
         'occur', 
         'detect', 
         'rpn', 
-        'basic_failure_id',
         'active',
         'project_id',
+        'business_unit_type_colums',
         'complex_node', 
         'created_by', 
         'updated_by'

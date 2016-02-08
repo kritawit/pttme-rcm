@@ -1,12 +1,4 @@
-<div class="box box-warning">
-    <div class="box-header with-border">
-      <h3 class="box-title">Informations</h3>
-      <div class="box-tools pull-right">
-      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-      </div><!-- /.box-tools -->
-    </div><!-- /.box-header -->
-  <div class="box-body" >
-  <form id="frmDetailNode" action="{{url()}}/asset-register/saveformlevel" method="post" class="form-horizontal" role="form">
+<form id="frmDetailNode" action="{{url()}}/asset-register/saveformlevel" method="post" class="form-horizontal" role="form">
   <div class="row">
   <div class="col-sm-6">
     <div class="form-group">
@@ -56,14 +48,34 @@
     <button class="btn btn-success" type="button" id="savedetainode"> Save</button>
       </div>
     </div>
-    
+
     </div>
     <div class="col-lg-6">
-      <div id="img-level">
-          
-      </div>
-      <div class="col-lg-6">
+{{--       <div class="col-lg-6">
         {!! Form::file('file_upload',['class'=>'form-control','id' => 'file_upload']) !!}
+      </div> --}}
+      <div class="form-group">
+        <div id="img-level" class="col-lg-12">
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="control-label col-lg-2"></label>
+        <div class="col-lg-10">
+          {!! Form::file('file_upload',['class'=>'form-control','id' => 'file_upload']) !!}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="control-label col-lg-6">Equipment Category : </label>
+        <div class="col-lg-6">
+          <input type="text" value="{{ $assets->category}}" disabled   class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="control-label col-lg-6">Equipment Type : </label>
+        <div class="col-lg-6">
+          <input type="text" value="{{ $assets->type}}" disabled   class="form-control">
+        </div>
       </div>
     </div>
     </div>
@@ -77,8 +89,6 @@
       </div>
     </div>
   </div>
-  </div><!-- /.box-body -->
-</div><!-- /.box -->
 
 <div class="modal fade" id="modal-basic">
   <div class="modal-dialog">
@@ -122,15 +132,15 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="modal-fmeca">
-  <div class="modal-dialog">
+<div class="modal modal-example-lg fade" id="modal-fmeca">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">FMECA</h4>
       </div>
       <div class="modal-body" id="body_fmeca">
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" id="saveFMECA">Save</button>
@@ -206,11 +216,10 @@
           data: $("#frmFMECA").serialize(),
           success:function(data){
             if (data==='success') {
+              alert('FMCA saved successfully.');
               $("#modal-fmeca").modal('hide');
               reloadTree();
               getbasictable();
-            }else{
-              alert('Save FMECA Fail!');
             }
           }
         });
@@ -269,46 +278,6 @@
       alert('Detection invalid!');
       $("#detection_id").focus();
       return false;
-    }else if($("#failure_effect").val()==''){
-      alert('Failure effect remark invalid!');
-      $("#failure_effect").focus();
-      return false;
-    }else if($("#rpn").val()==''){
-      alert('RPN No. invalid!');
-      $("#rpn").focus();
-      return false;
-    }else if($("#ref1").val()==''){
-      alert('Plant or Unit SD? invalid!');
-      $("#ref1").focus();
-      return false;
-    }else if($("#ref2").val()==''){
-      alert('Damage Cost (Bath) invalid!');
-      $("#ref2").focus();
-      return false;
-    }else if($("#ref3").val()==''){
-      alert('Spare part problem invalid!');
-      $("#ref3").focus();
-      return false;
-    }else if($("#ref4").val()==''){
-      alert('Maintenance Time invalid!');
-      $("#ref4").focus();
-      return false;
-    }else if($("#ref5").val()==''){
-      alert('Unit Preaparation and Start up time invalid!');
-      $("#ref5").focus();
-      return false;
-    }else if($("#ref6").val()==''){
-      alert('Total Economic loss (Bath) invalid!');
-      $("#ref6").focus();
-      return false;
-    }else if($("#ref7").val()==''){
-      alert('Existing Detection method invalid!');
-      $("#ref7").focus();
-      return false;
-    }else if($("#ref8").val()==''){
-      alert('None invalid!');
-      $("#ref8").focus();
-      return false;
     }else{
       return true;
     }
@@ -318,8 +287,8 @@
     $("#basic_table").load("{{url()}}/asset-register/basictable?node_id="+$("#node_id").val());
   }
 
-  function getTaskSelection(){
-    $("#control-panel").load("{{url()}}/asset-register/taskselection?node_id="+$("#node_id").val()+"&level={{$assets->level}}");
+  function getTaskSelection(id){
+    $("#control-panel").load("{{url()}}/asset-register/taskselection?node_id="+$("#node_id").val()+"&level={{$assets->level}}&id="+id);
   }
 
   function getformdetail(id,node){

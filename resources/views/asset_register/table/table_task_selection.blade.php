@@ -1,5 +1,4 @@
-<div class="col-sm-12" style="overflow: scroll;">
-	<table class="display" id="table_task_select">
+<table class="display" id="table_task_select" width="100%">
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -32,8 +31,7 @@
 			</tr>
 		@endforeach
 	</tbody>
-	</table>
-</div>
+</table>
 <script type="text/javascript">
 	var task_selection_id = null;
 	$(function() {

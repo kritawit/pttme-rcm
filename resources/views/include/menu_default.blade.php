@@ -14,7 +14,7 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-          <li><a href="{{ url('dash-board') }}"><i class="fa fa-circle-o text-red"></i> <span>New / Open Project</span></a></li>
+          <li><a href="{{ url('project') }}"><i class="fa fa-circle-o text-red"></i> <span>New / Open Project</span></a></li>
           </ul>
     </section>
         <!-- /.sidebar -->

@@ -22,7 +22,7 @@
 <tr>
   <th></th>
   @foreach($header_consequence as $header)
-    <th style="text-align:center;">{{$header->description}}</th>
+        <th style="text-align:center;">{{$header->description}}</th>
   @endforeach
 </tr>
 </thead>
@@ -32,7 +32,7 @@
         <td width="5%" align="center">{{$rows_conseq->description}}</td>
         @foreach ($consequence as $conseq)
             @if ($conseq->rows == $rows_conseq->rows)
-                <td class="cell2"><textarea class="conseq" readonly name="{{$conseq->id}}">{{$conseq->description}}</textarea></td>
+                <td class="cell2"><textarea class="conseq" cols="35" readonly name="{{$conseq->id}}">{{$conseq->description}}</textarea></td>
             @endif
         @endforeach
     <tr>
@@ -162,8 +162,9 @@ function saveallcomplex(){
                 loadcomplexdetail($("#complex_id").val());
             }
         });
-
+        updatecomplexnode();
         setTimeout(function(){
+            $("#tt").tree('reload');
             loadformlevel($("#node_id").val(),3,$("#asset_name").val());
         }, 1000);
 

@@ -1,12 +1,4 @@
-<div class="box box-warning">
-    <div class="box-header with-border">
-      <h3 class="box-title">Informations</h3>
-      <div class="box-tools pull-right">
-        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-      </div>
-    </div>
-  <div class="box-body" >
-    <form action="{{url()}}/asset-register/saveformlevel" id="frmOther" method="POST" class="form-horizontal" role="form" >
+<form action="{{url()}}/asset-register/saveformlevel" id="frmOther" method="POST" class="form-horizontal" role="form" >
             <div class="row">
               <div class="col-lg-6">
               <div class="form-group">
@@ -63,7 +55,7 @@
             <div class="form-group">
               <div class="col-lg-12">
                 <div id="img-level">
-                  
+
                 </div>
                 <input type="file" class="form-control" name="file_upload" value="" placeholder="">
               </div>
@@ -93,8 +85,6 @@
       @endforeach
       </tbody>
     </table>
-  </div><!-- /.box-body -->
-</div><!-- /.box -->
 {!! HTML::script('public/js/jquery.form.js') !!}
 <script type="text/javascript">
   $(function() {
@@ -107,6 +97,7 @@
     dataType: 'json',
     success: function(text){
       if (text[0]['message']==='success') {
+        $("#tt").tree('reload');
         alert('Information Successfully Saved.');
         loadpicture($("input[name=node_id]").val());
       }else{
@@ -123,10 +114,6 @@
   if($("input[name=asset_name]").val()==''){
     alert('{{ $assets->level_desc}} invalid!');
     $("input[name=asset_name]").focus();
-    return false;
-  }else if($("#description").val()==''){
-    alert('Description invalid!');
-    $("#description").focus();
     return false;
   }else{
     return true;

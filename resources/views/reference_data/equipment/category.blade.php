@@ -51,11 +51,16 @@
               {!! Form::close() !!}
              	<hr>
               <div class="col-sm-12">
+              <a href="#" class="btn btn-danger" onclick="deleteRef();return false;"><i class="fa fa-trash-o"></i> Delete Selected</a>
+              <hr>
                 <div>
                     <table id="tb-equipment" class="table table-hover">
                       <thead>
                         <tr>
+                            <th>Active</th>
                             <th>Equipment Category</th>
+                            <th>Created By</th>
+                            <th>Created Date</th>
                             <th class="text-center">Edit</th>
                             <th class="text-center">Delete</th>
                         </tr>
@@ -63,7 +68,10 @@
                       <tbody>
                         @foreach($category as $cate)
                         <tr>
+                            <td width="20"><input type="checkbox" value="{{ $cate->id }}" name="active[]"></td>
                             <td>{{ $cate->description }}</td>
+                            <td>{{$cate->members->name}}</td>
+                            <td>{{$cate->created_at}}</td>
                             <td class="text-center">
                                 <a href="#" onclick="getEdit({{$cate->id}});"><span class="fa fa-edit text-warning"></span></a>
                             </td>
@@ -97,8 +105,22 @@
 	@include('include.normal-js')
 	<script type="text/javascript">
 	$(function() {
-		$("#tb-equipment").DataTable();
+		var table = $("#tb-equipment").DataTable();
 	});
+  function deleteRef() {
+    var checked = new Array();
+    checked = $(':checkbox:checked[name^=active]').val();
+    if (checked != null) {
+      if(confirm("Are you sure you want to delete?")){
+        $(':checkbox:checked[name^=active]').val(function() {
+          deleteSelect(this.value);
+        });
+        location.reload();
+      }
+    }else {
+      alert('Please select!');
+    }
+  }
   function getEdit(id){
     $.ajax({
       url: '{{url()}}/reference-data/equipment/editcategory',
@@ -125,6 +147,13 @@
       }
       });
     }
+  }
+  function deleteSelect(id){
+    $.ajax({
+      url: '{{url()}}/reference-data/equipment/destroycategory',
+      type: 'POST',
+      data: {'id':id, '_token': $('input[name=_token]').val()}
+    });
   }
 	</script>
 @stop

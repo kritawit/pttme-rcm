@@ -25,4 +25,10 @@ class Member extends Model implements AuthenticatableContract, CanResetPasswordC
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+
+	public function refcategory()
+    {
+        return $this->hasMany('App\RefCategory');
+    }
 }

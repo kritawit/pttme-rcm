@@ -15,7 +15,7 @@
         <td width="5%" align="center">{{$rows_conseq->description}}</td>
         @foreach ($complex_color as $conseq)
             @if ($conseq->rows == $rows_conseq->rows)
-                <td class="cell2" width="60" onclick="opencolor({{$conseq->id}},{{$conseq->complex_id}})" bgcolor="{{$conseq->description}}">{{$conseq->ref1}}</td>
+                <td class="cell2" width="60" onclick="opencolor({{$conseq->id}},{{$conseq->complex_id}},'{{$conseq->description}}','{{$conseq->ref1}}')" bgcolor="{{$conseq->description}}">{{$conseq->ref1}}</td>
             @endif
         @endforeach
     <tr>

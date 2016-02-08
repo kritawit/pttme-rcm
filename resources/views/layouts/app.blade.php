@@ -27,7 +27,7 @@
       <script type="text/javascript" src="{{ asset('public/js/respond.min.js') }}"></script>
       <![endif]-->
   </head>
-  <body class="hold-transition skin-blue sidebar-mini fixed">
+  <body class="hold-transition skin-blue sidebar-collapse sidebar-mini fixed">
     <div class="wrapper">
     @include('include.menu_top')
     @if(Session::has('project_id'))

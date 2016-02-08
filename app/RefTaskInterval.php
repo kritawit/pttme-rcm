@@ -6,7 +6,7 @@ class RefTaskInterval extends Model {
 
 	protected $table = 'ref_task_intervals';
 
-	protected $fillable = array('id','interval','description','active','project_id', 'created_by', 'updated_by');
+	protected $fillable = array('id','interval','type_use','description','active','project_id', 'created_by', 'updated_by');
 
     public static $rules = array(
     	'interval'=>'required',

@@ -57,7 +57,6 @@
                     <label for="" class="col-lg-3"></label>
                     <div class="col-md-8">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> New Equipment</button>
-                        <a class="btn btn-success" data-toggle="modal" href='#modal-id'><span class="fa fa-file-text"></span>  Import Equipment CSV</a>
                     </div>
                   </div>
               </fieldset>
@@ -77,9 +76,9 @@
                 			<tbody>
                       @foreach($basics as $basic)
                 				<tr>
-                					<td class="text-center">{{ $basic->category->description }}</td>
-                					<td class="text-center">{{ $basic->type->description }}</td>
-                					<td class="text-center">{{ $basic->part->description }}</td>
+                					<td class="text-center">{{ $basic->category }}</td>
+                					<td class="text-center">{{ $basic->types }}</td>
+                					<td class="text-center">{{ $basic->parts }}</td>
                                     <td class="text-center">
                                         <a href="#" onclick="getEdit({{$basic->id}});"><span class="fa fa-edit text-warning"></span></a>
                                     </td>
@@ -95,33 +94,6 @@
             </div>
 			</div>
 		</div>
-
-    <div class="modal fade" id="modal-id">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title"><span class="fa fa-file-text"></span>  Import Data</h4>
-          </div>
-          <div class="modal-body">
-            {!! Form::open(array('url'=>'basic-data-setup/equipment','class'=>'form-inline','role'=>'form')) !!}
-                <div class="form-group">
-                  <label for="" class="col-lg-4"> File Import : </label>
-                  <div class="col-lg-6">
-                    {!! Form::file('file_data') !!}
-                  </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-lg-2"></label>
-                    <div class="col-md-3">
-                      <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Import</button>
-                    </div>
-                  </div>
-            {!! Form::close() !!}
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="modal fade" id="modal-edit">
     <div class="modal-dialog">
