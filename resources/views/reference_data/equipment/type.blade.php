@@ -71,7 +71,7 @@
                             <td width="20"><input type="checkbox" value="{{ $type->id }}" name="active[]"></td>
                             <td>{{ $type->description }}</td>
                             <td>{{ $type->members->name }}</td>
-                            <td>{{ $type-> }}</td>
+                            <td>{{ $type->created_at }}</td>
                             <td class="text-center">
                               <a href="#" onclick="getEdit({{$type->id}});"><span class="fa fa-edit text-warning"></span></a>
                             </td>
