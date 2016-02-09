@@ -56,35 +56,40 @@
                   <div class="form-group">
                     <label for="" class="col-lg-3"></label>
                     <div class="col-md-8">
-                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> New Equipment</button>
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Save</button>
+                        <a class="btn btn-warning" data-toggle="modal" href='#modal-import'><span class="fa fa-file-text"></span>  Import Failure CSV</a>
+                        <a class="btn btn-info" data-toggle="modal" href='#modal-desc'><span class="fa fa-book"></span>  Description Guide CSV</a>
                     </div>
                   </div>
               </fieldset>
               {!! Form::close() !!}
+              <a href="#" class="btn btn-danger" onclick="deleteRef();return false;"><i class="fa fa-trash-o"></i> Delete Selected</a>
                 	<hr>
                 	<div class="table-responsive">
                 		<table id="tb-equipment" class="table table-hover">
                 			<thead>
                 				<tr>
-                                    <th class="text-center">Category</th>
-                                    <th class="text-center">Type</th>
-                                    <th class="text-center">Part</th>
-                                    <th class="text-center">Edit</th>
-                                    <th class="text-center">Delete</th>
-                                </tr>
+                            <th class="text-center">Active</th>
+                            <th class="text-center">Category</th>
+                            <th class="text-center">Type</th>
+                            <th class="text-center">Part</th>
+                            <th class="text-center">Edit</th>
+                            <th class="text-center">Delete</th>
+                        </tr>
                 			</thead>
                 			<tbody>
                       @foreach($basics as $basic)
                 				<tr>
-                					<td class="text-center">{{ $basic->category }}</td>
-                					<td class="text-center">{{ $basic->types }}</td>
-                					<td class="text-center">{{ $basic->parts }}</td>
-                                    <td class="text-center">
-                                        <a href="#" onclick="getEdit({{$basic->id}});"><span class="fa fa-edit text-warning"></span></a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" onclick="desTroy({{$basic->id}});return false;"><span class="fa fa-trash-o text-danger"></span></a>
-                                    </td>
+                          <td width="20" class="text-center"><input type="checkbox" value="{{ $basic->id }}" name="active[]"></td>
+                					<td class="text-left">{{ $basic->category }}</td>
+                					<td class="text-left">{{ $basic->types }}</td>
+                					<td class="text-left">{{ $basic->parts }}</td>
+                            <td class="text-center">
+                                <a href="#" onclick="getEdit({{$basic->id}});"><span class="fa fa-edit text-warning"></span></a>
+                            </td>
+                            <td class="text-center">
+                                <a href="#" onclick="desTroy({{$basic->id}});return false;"><span class="fa fa-trash-o text-danger"></span></a>
+                            </td>
                 				</tr>
                       @endforeach
                 			</tbody>
@@ -108,46 +113,161 @@
       </div>
     </div>
   </div>
+  
+  <div class="modal fade" id="modal-import">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Import Basic Failure CSV</h4>
+        </div>
+        <div class="modal-body">
+          {!! Form::open(array('url'=>'basic-data-setup/importbasicequipment','class'=>'form-horizontal','role'=>'form','method'=>'POST','files'=>true)) !!}
+            <div class="form-group">
+              <label for="" class="control-label col-lg-3">CSV File</label>
+              <div class="col-lg-8">
+                <input type="file" class="form-control" name="upload" value="" placeholder="">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary"><span class="fa fa-file-text"> Import</button>
+                <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          {!! Form::close() !!}
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  
+  <div class="modal modal-example-lg fade" id="modal-desc">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Description Guide CSV</h4>
+        </div>
+        <div class="modal-body">
+          <div style="margin-bottom:15px;">
+            <a href="{{url()}}/basic-data-setup/templatebasicequipment" class="btn btn-warning" download><i class="fa fa-download" ></i> Download Template</a>
+          </div>
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Equipment Category</a></li>
+              <li ><a href="#tab_2" data-toggle="tab" aria-expanded="false">Equipment Type</a></li>
+              <li ><a href="#tab_3" data-toggle="tab" aria-expanded="false">Equipment Part</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+            <table class="table table-hover" id="tb_ref_category">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($refcategory as $mode): ?>
+                <tr>
+                  <td>{{$mode->id}}</td>
+                  <td>{{$mode->description}}</td>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+          </table>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                <table class="table table-hover" id="tb_ref_type">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($reftype as $cause): ?>
+                <tr>
+                  <td>{{$cause->id}}</td>
+                  <td>{{$cause->description}}</td>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+          </table>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3">
+                <table class="table table-hover" id="tb_ref_part">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($refpart as $cause): ?>
+                <tr>
+                  <td>{{$cause->id}}</td>
+                  <td>{{$cause->description}}</td>
+                </tr>
+              <?php endforeach ?>
+            </tbody>
+          </table>
+              </div>
+            </div>
+            <!-- /.tab-content -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
 	</section>
 	@include('include.normal-js')
 	<script type="text/javascript">
 $(document).ready(function() {
 	 $("#tb-equipment").DataTable({
-      ordering: false
+      ordering: true
    });
-function groupTable($rows, startIndex, total){
-if (total === 0){
-  return;
-}
-var i , currentIndex = startIndex, count=1, lst=[];
-var tds = $rows.find('td:eq('+ currentIndex +')');
-var ctrl = $(tds[0]);
-lst.push($rows[0]);
-for (i=1;i<=tds.length;i++){
-  if (ctrl.text() ==  $(tds[i]).text()){
-  count++;
-  $(tds[i]).addClass('deleted');
-  lst.push($rows[i]);
-}
-else{
-      if(count>1){
-        ctrl.attr('rowspan',count);
-        groupTable($(lst),startIndex+1,total-1);
+   $("#tb_ref_category").DataTable();
+   $("#tb_ref_type").DataTable();
+   $("#tb_ref_part").DataTable();
+});
+function deleteRef() {
+    var checked = new Array();
+    checked = $(':checkbox:checked[name^=active]').val();
+    if (checked != null) {
+      if(confirm("Are you sure you want to delete?")){
+        $(':checkbox:checked[name^=active]').val(function() {
+          deleteSelect(this.value);
+        });
+
+        setTimeout(function() {
+          window.location.reload();
+        }, 100);
+
       }
-      count=1;
-      lst = [];
-      ctrl=$(tds[i]);
-      lst.push($rows[i]);
+    }else {
+      alert('Please select!');
     }
   }
-}
-groupTable($('#tb-equipment tr:has(td)'),0,3);
 
-$('#tb-equipment .deleted').remove();
+  function deleteSelect(id){
+    $.ajax({
+      url: '{{url()}}/basic-data-setup/destroyequipment',
+      type: 'POST',
+      data: {'id':id, '_token': $('input[name=_token]').val()}
+    });
+  }
 
-});
-
-    function getEdit(id){
+  function getEdit(id){
     $.ajax({
       url: '{{url()}}/basic-data-setup/editequipment',
       type: 'POST',
@@ -168,7 +288,7 @@ $('#tb-equipment .deleted').remove();
       data: {'id':id, '_token': $('input[name=_token]').val()},
       success:function(data){
         if(data='success'){
-          location.reload();
+          window.location.reload();
         }
       }
       });

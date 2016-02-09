@@ -55,31 +55,34 @@
                   <div class="form-group">
                     <label for="" class="col-lg-2"></label>
                     <div class="col-md-6">
-                      <button type="submit" class="btn btn-success"> Save</button>
+                      <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Save</button>
                         <a class="btn btn-warning" data-toggle="modal" href='#modal-import'><span class="fa fa-file-text"></span>  Import Failure CSV</a>
                         <a class="btn btn-info" data-toggle="modal" href='#modal-desc'><span class="fa fa-book"></span>  Description Guide CSV</a>
                     </div>
                   </div>
               </fieldset>
               {!! Form::close() !!}
-                	<hr>
+              <a href="#" class="btn btn-danger" onclick="deleteRef();return false;"><i class="fa fa-trash-o"></i> Delete Selected</a>
+                  <hr>
                 	<div>
                 		<table id="tb-task" class="table table-hover">
                 			<thead>
                             <tr>
+                                <th class="text-center">Active</th>
                                 <th class="text-center">Failure Cause</th>
                                 <th class="text-center">Task Type</th>
                                 <th class="text-center">Task List</th>
                                 <th class="text-center">Edit</th>
                                 <th class="text-center">Delete</th>
                             </tr>
-                            </thead>
+                      </thead>
                 			<tbody>
                 				@foreach($basictask as $bt)
                         <tr>
-                            <td>{{ $bt->cause->description }}</td>
-                            <td>{{ $bt->type->description }}</td>
-                            <td>{{ $bt->tasklist->description }}</td>
+                            <td width="20" class="text-center"><input type="checkbox" value="{{ $bt->id }}" name="active[]"></td>
+                            <td class="text-left">{{ $bt->cause->description }}</td>
+                            <td class="text-left">{{ $bt->type->description }}</td>
+                            <td class="text-left">{{ $bt->tasklist->description }}</td>
                             <td class="text-center">
                                 <a href="#" onclick="getEdit({{$bt->id}});return false;"><span class="fa fa-edit text-warning"></span></a>
                             </td>
@@ -233,37 +236,35 @@
     $("#tb_cause").DataTable();
     $("#tb_types").DataTable();
     $("#tb_tlist").DataTable();
-    function groupTable($rows, startIndex, total){
-if (total === 0){
-  return;
-}
-var i , currentIndex = startIndex, count=1, lst=[];
-var tds = $rows.find('td:eq('+ currentIndex +')');
-var ctrl = $(tds[0]);
-lst.push($rows[0]);
-for (i=1;i<=tds.length;i++){
-  if (ctrl.text() ==  $(tds[i]).text()){
-  count++;
-  $(tds[i]).addClass('deleted');
-  lst.push($rows[i]);
-}
-else{
-  if (count>1){
-    ctrl.attr('rowspan',count);
-    groupTable($(lst),startIndex+1,total-1);
-  }
-  count=1;
-  lst = [];
-  ctrl=$(tds[i]);
-  lst.push($rows[i]);
+	});
+
+  function deleteRef() {
+    var checked = new Array();
+    checked = $(':checkbox:checked[name^=active]').val();
+    if (checked != null) {
+      if(confirm("Are you sure you want to delete?")){
+        $(':checkbox:checked[name^=active]').val(function() {
+          deleteSelect(this.value);
+        });
+
+        setTimeout(function() {
+          window.location.reload();
+        }, 100);
+
+      }
+    }else {
+      alert('Please select!');
     }
   }
-}
-groupTable($('#tb-task tr:has(td)'),0,3);
 
-$('#tb-task .deleted').remove();
+  function deleteSelect(id){
+    $.ajax({
+      url: '{{url()}}/basic-data-setup/destroytask',
+      type: 'POST',
+      data: {'id':id, '_token': $('input[name=_token]').val()}
+    });
+  }
 
-	});
     function getEdit(id){
     $.ajax({
       url: '{{url()}}/basic-data-setup/edittask',
