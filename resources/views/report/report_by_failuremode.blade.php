@@ -8,7 +8,7 @@
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
-           <li><a href="{{ url('/dash-board') }}"><i class="fa fa-dashboard"></i> Dash board</a></li>
+           <li><a href="{{ url('/project') }}"><i class="fa fa-home"></i> Home</a></li>
            <li class="active">Report - By Failure Mode</li>
          </ol>
     </section>
