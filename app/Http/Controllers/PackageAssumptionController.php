@@ -24,28 +24,29 @@ class PackageAssumptionController extends Controller {
 	public function getIndex(){
 		$package = PackageAssumption::where('project_id','=',Session::get('project_id'))
 				->where('active','=',1)
-				->get();
-		return View::make('package_assumption.index')->with('package',$package);
+				->first();
+		return View::make('package_assumption.index')->with(compact('package'));
 	}
 
 	public function postPackage(){
 		$validator = Validator::make(Input::all(),PackageAssumption::$rules);
 		if ($validator->passes()) {
-			$checked = PackageAssumption::where('description','=',Input::get('description'))
-					->where('name','=',Input::get('name'))
-					->where('project_id','=',Session::get('project_id'))
-					->where('active','=',1)
-					->get();
-			if ($checked->isEmpty()) {
+			if (!empty(Input::get('id'))) {
+				$pack = PackageAssumption::find(Input::get('id'));
+				$pack->package_name = Input::get('package_name');
+				$pack->product_process_function = Input::get('product_process_function');
+				$pack->assumtion_for_rcm = Input::get('assumtion_for_rcm');
+				$pack->save();
+				return Redirect::to('package-assumption')->with('message','Package Assumption Updated');
+			}else{
 				$pack = new PackageAssumption;
-				$pack->name = Input::get('name');
-				$pack->description = Input::get('description');
+				$pack->package_name = Input::get('package_name');
+				$pack->product_process_function = Input::get('product_process_function');
+				$pack->assumtion_for_rcm = Input::get('assumtion_for_rcm');
 				$pack->created_by = Auth::user()->id;
 				$pack->project_id = Session::get('project_id');
 				$pack->save();
 				return Redirect::to('package-assumption')->with('message','Package Assumption Created');
-			}else{
-				return Redirect::back()->withErrors('Package Assumption duplicate!');
 			}
 		}
 		return Redirect::to('package-assumption')

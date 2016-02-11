@@ -62,6 +62,12 @@ class AssetRegisterController extends Controller
         return Response::json($temp);
     }
     
+    public function getLoadeditnodename(){
+        $data = array();
+        $data = AssetRegister::find(Input::get('id'));
+        return Response::json($data);
+    }
+
     public function postAddnode() {
         
         $asset = new AssetRegister;
@@ -79,7 +85,28 @@ class AssetRegisterController extends Controller
     }
     
     public function postAddsubnode() {
-        $data = array();
+
+        if (!empty(Input::get('asset_id'))) {
+            $asset = AssetRegister::find(Input::get('asset_id'));
+            $asset->asset_name =  Input::get('asset_name');
+            $asset->updated_by = Auth::user()->id;
+            if (!empty(Input::get('cat_id'))) {
+                $asset->cat_id = Input::get('cat_id');
+            }
+            if (!empty(Input::get('type_id'))) {
+                $asset->type_id = Input::get('type_id');
+            }
+            if (!empty(Input::get('business_unit_type_colums'))) {
+                $asset->business_unit_type_colums = Input::get('business_unit_type_colums');
+            }
+            if ($asset->save()) {
+                echo "success";
+            }else{
+                echo "fail";
+            }
+
+        }else{
+            $data = array();
         $data = AssetRegister::find(Input::get('node_id_asset'));
         
         $asset = new AssetRegister;
@@ -96,6 +123,7 @@ class AssetRegisterController extends Controller
         if (!empty(Input::get('business_unit_type_colums'))) {
             $asset->business_unit_type_colums = Input::get('business_unit_type_colums');
         }
+
         $level = $data->level + 1;
         $asset->level = $level;
         $asset->created_by = Auth::user()->id;
@@ -121,6 +149,7 @@ class AssetRegisterController extends Controller
         } 
         else {
             echo "fail";
+        }
         }
     }
     
@@ -417,7 +446,7 @@ class AssetRegisterController extends Controller
         
         $header_consequence = DB::table('complex_detail_default')->select('complex_detail_default.id', 'complex_detail_default.complex_id', 'complex_detail_default.columns', 'complex_detail_default.rows', 'complex_detail_default.description')->where('complex_detail_default.active', '=', 1)->where('complex_detail_default.complex_id', '=', Input::get('complex_id'))->whereIn('complex_detail_default.columns', array($bss_unit, 4, 5, 6))->whereIn('complex_detail_default.type', array(6))->get();
         
-        $rows_consequence = DB::table('complex_detail_default')->select('complex_detail_default.id', 'complex_detail_default.complex_id', 'complex_detail_default.columns', 'complex_detail_default.rows', 'complex_detail_default.description')->where('complex_detail_default.active', '=', 1)->where('complex_detail_default.complex_id', '=', Input::get('complex_id'))->whereIn('complex_detail_default.type', array(4))->get();
+        $rows_consequence = DB::table('complex_detail_default')->select('complex_detail_default.id','complex_detail_default.ref1', 'complex_detail_default.complex_id', 'complex_detail_default.columns', 'complex_detail_default.rows', 'complex_detail_default.description')->where('complex_detail_default.active', '=', 1)->where('complex_detail_default.complex_id', '=', Input::get('complex_id'))->whereIn('complex_detail_default.type', array(4))->get();
         
         $consequence = DB::table('asset_complex_detail')->select('asset_complex_detail.ref1', 'asset_complex_detail.id', 'asset_complex_detail.complex_id', 'asset_complex_detail.columns', 'asset_complex_detail.rows', 'asset_complex_detail.description')->where('asset_complex_detail.active', '=', 1)->where('asset_complex_detail.complex_id', '=', Input::get('complex_id'))->where('asset_complex_detail.node', '=', Input::get('node_id'))->where('asset_complex_detail.project_id', '=', Session::get('project_id'))->whereIn('asset_complex_detail.columns', array($bss_unit, 4, 5, 6))->whereIn('asset_complex_detail.type', array(1))->get();
         
@@ -866,6 +895,7 @@ and rs.id = " . Input::get('node_id'))) [0];
         $input = array();
         $asset = array();
         $asset = AssetRegister::find(Input::get('node_id'));
+        $input['drawing'] = Input::get('drawing');
         $input['description'] = Input::get('description');
         $input['asset_name'] = Input::get('asset_name');
         $image = Input::file('file_upload');
@@ -941,18 +971,17 @@ where f.active = 1 and f.project_id = " . Session::get('project_id') . " and f.n
         foreach ($tskin as $st) {
             $taskinterval[$st->interval] = $st->interval;
         }
-        
 
         $types = array();
         $task_type = DB::Select(DB::raw("select t.*,y.description as 'type',
 			l.description as 'list' from basic_tasks t
-			left join ref_task_types y
+			inner join (select * from ref_task_types where active = 1) y
 			on t.type_id = y.id
-			left join ref_task_lists l
+			inner join (select * from ref_task_lists where active = 1) l
 			on t.list_id = l.id
 			where t.active = 1 and t.project_id = " . Session::get('project_id') . "
 			and t.cause_id = " . $func_failure->cause_id));
-        
+
         foreach ($task_type as $st) {
             $types[$st->type_id] = $st->type;
         }
@@ -970,7 +999,7 @@ where f.active = 1 and f.project_id = " . Session::get('project_id') . " and f.n
         		->with(compact('order_type'))
         		->with(compact('assets'));
     }
-    
+
     public function getBasictask() {
         $assets = array();
         $assets = DB::Select(DB::raw("select f.id,f.basic_failure_id,
@@ -1415,7 +1444,8 @@ where tk.active = 1 and tk.asset_basic_failure_id = ".Input::get('asset_basic_fa
 					AND rows = " . Input::get('serv_id') . "
 					AND columns = " . $rs)) [0];
             
-            echo $step2->question;
+            return Response::json($step2);
+            // echo $step2->ref1;
         }
         
         function getMaxbasicfailure() {
@@ -1432,13 +1462,22 @@ where tk.active = 1 and tk.asset_basic_failure_id = ".Input::get('asset_basic_fa
         }
         
         public function getPropertieslevel() {
+
+            $id = 0;
+
+            if (!empty(Input::get('id'))) {
+                $id = Input::get('id');
+            }
+
             $unit = array();
             $bss_unit = DB::Select(DB::raw("select * from complex_detail_default
 			where type = 6 and columns in (1,2,3) "));
             foreach ($bss_unit as $ser) {
                 $unit[$ser->columns] = $ser->description;
             }
-            return View::make('asset_register.selected.business_unit')->with(compact('unit'));
+            return View::make('asset_register.selected.business_unit')
+                    ->with('id',$id)
+                    ->with(compact('unit'));
         }
         
         public function getBusinessunittype() {

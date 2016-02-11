@@ -31,4 +31,24 @@ class Member extends Model implements AuthenticatableContract, CanResetPasswordC
     {
         return $this->hasMany('App\RefCategory');
     }
+
+	public static $rules = array(
+		'username' => 'required|unique:members',
+		'name' => 'required',
+		'email' => 'required|email',
+		'password' => 'required',
+		'role' => 'required'
+	);
+
+	public function role_title() {
+		return $this->Roles()[$this->role];
+	}
+
+	public function Roles() {
+		return [
+			1 => "Observer",
+			2 => "RCM User",
+			3 => "Administrator",
+		];
+	}
 }

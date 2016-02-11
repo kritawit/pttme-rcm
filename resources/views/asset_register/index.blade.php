@@ -58,6 +58,7 @@
                         </ul>
                         <div id="mm" class="easyui-menu" style="width:120px;">
                         <div onclick="append();" data-options="iconCls:'icon-add'">Create</div>
+                        <div onclick="editnode();return false;" data-options="iconCls:'icon-edit'">Edit</div>
                         <div onclick="removeit();" data-options="iconCls:'icon-remove'">Remove</div>
                         <div class="menu-sep"></div>
                         <div onclick="expand()">Expand</div>
@@ -86,6 +87,7 @@
                 <div class="form-group">
                     <div class="col-lg-12">
                     <input type="hidden" name="node_id_asset" id="node_id_asset">
+                    <input type="hidden" name="asset_id" id="asset_id" >
                     <input type="text" name="asset_name" id="asset_name" class="form-control">
                     </div>
                     <div class="col-lg-12" id="bss_unit">
@@ -401,6 +403,23 @@
             $("#asset_name").val('');
             $("#node_id_asset").val(node.id);
         }
+        function editnode(){
+            var node = $('#tt').tree('getSelected');
+            $.ajax({
+                url: '{{url()}}/asset-register/loadeditnodename',
+                type: 'GET',
+                dataType: 'json',
+                data: {id: node.id},
+                success:function(data){
+                    $("#select-equip").html('');
+                    $("#bss_unit").html('');
+
+                    $("#asset_id").val(data.id);
+                    $("#asset_name").val(data.asset_name);
+                    $("#modal-node").modal('show');
+                }
+            });
+        }
 
         function removeit(){
             var node = $('#tt').tree('getSelected');
@@ -426,10 +445,6 @@
         if ($("#asset_name").val()=='') {
             alert('Asset name invalid !');
             $("#asset_name").focus();
-            return false;
-        }else if ($("#business_unit_type_colums").val()=='') {
-            alert('Business Unit Type invalid !');
-            $("#business_unit_type_colums").focus();
             return false;
         }else{
             return true;
@@ -493,5 +508,7 @@
                 }
             });
         }
+
+
     </script>
 @stop

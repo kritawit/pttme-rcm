@@ -9,17 +9,13 @@
       <label for="" class="control-label col-lg-4">{{ $assets->level_desc}}:</label>
       <div class="col-lg-8">
         <input type="hidden" name="node"  value="{{ $assets->id}}"  class="form-control" >
-        @if (!empty($complex_detail))
-          <input type="text" name="asset_name" readonly value="{{ $assets->asset_name}}"   class="form-control node-detail">
-        @else
-          <input type="text" name="asset_name"  value="{{ $assets->asset_name}}"   class="form-control node-detail">
-        @endif
+          <input type="text" name="asset_name" id="asset_name"  value="{{ $assets->asset_name}}"  class="form-control node-detail">
       </div>
     </div>
     <div class="form-group">
       <label for="" class="control-label col-lg-4">Description:</label>
       <div class="col-lg-8">
-          <textarea name="description" <?php if(!empty($complex_detail)){echo "readonly";} ?> id="description" class="form-control node-detail" cols="25" rows="3">{{ $assets->description}}</textarea>
+          <textarea name="description" id="description" class="form-control node-detail" cols="25" rows="3">{{ $assets->description}}</textarea>
       </div>
     </div>
     <div class="form-group">

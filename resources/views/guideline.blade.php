@@ -97,6 +97,7 @@
                     <tr>
                         <th class="text-center">Guidelines</th>
                         <th class="text-center">VDO</th>
+                        <th class="text-center">PDF</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -118,6 +119,9 @@
                                 });
                             </script>
                         </td>
+                        <td class="text-center">
+                            <a href="public/manual/RCM Manual Login.pdf"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                        </td>
                     </tr>
                     <tr>
                         <td>2. RCM NEW PROJECT</td>
@@ -136,6 +140,9 @@
                                     }
                                 });
                             </script>
+                        </td>
+                        <td class="text-center">
+                            <a href="public/manual/RCM Manual New Project.pdf"><i class="fa fa-file-pdf-o fa-2x"></i></a>
                         </td>
                     </tr>
                     <tr>
@@ -156,6 +163,9 @@
                                 });
                             </script>
                         </td>
+                        <td class="text-center">
+                            <a href="public/manual/RCM Manual Reference Data Equipment Category.pdf"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                        </td>
                     </tr>
                     <tr>
                         <td>4. REFERENCE DATA - EQUIPMENT TYPE</td>
@@ -174,6 +184,9 @@
                                     }
                                 });
                             </script>
+                        </td>
+                        <td class="text-center">
+                            <a href="public/manual/RCM Manual Reference Data Equipment Type.pdf"><i class="fa fa-file-pdf-o fa-2x"></i></a>
                         </td>
                     </tr>
                     <tr>
@@ -194,11 +207,17 @@
                                 });
                             </script>
                         </td>
+                        <td class="text-center">
+                            <a href="public/manual/RCM Manual Reference Data Equipment Part.pdf"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                        </td>
                     </tr>
                     <tr>
                         <td>6. REFERENCE DATA - FAILURE MODE</td>
                         <td>
 
+                        </td>
+                        <td class="text-center">
+                            <a href="public/manual/RCM Manual Reference Data Failure Mode.pdf"><i class="fa fa-file-pdf-o fa-2x"></i></a>
                         </td>
                     </tr>
                     <tr>
@@ -206,6 +225,7 @@
                         <td>
 
                         </td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>

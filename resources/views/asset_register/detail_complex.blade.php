@@ -1,9 +1,8 @@
 @if(!empty($consequence)&&!empty($occorrence)&&!empty($detection))
 <hr>
 <div id="panel-save">
-    <a href="#" class="btn btn-success" id="saveall" onclick="saveallcomplex();return false;"><i class="fa fa-save"></i>  Save</a>
-    <hr>
 </div>
+<hr>
 <div class="nav-tabs-custom">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Consequence</a></li>
@@ -20,19 +19,35 @@
 <table border="1" style="width:100%">
 <thead align="center">
 <tr>
-  <th></th>
-  @foreach($header_consequence as $header)
+    @if(count($header_consequence)>3)
+        <th style="text-align:center;background-color:cyan;" colspan="5">Consequence (Risk matrix for severity)</th>
+    @else
+        <th style="text-align:center;background-color:cyan;" colspan="4">Consequence (Risk matrix for severity)</th>
+    @endif
+</tr>
+<tr>
+    <th></th>
+    @if(count($header_consequence)>3)
+        <th style="text-align:center;">Total Economic Loss (Bath)</th>
+    @endif
+    <th></th>
+    <th style="text-align:center;">Social</th>
+    <th style="text-align:center;">People</th>
+</tr>
+<tr>
+    <th></th>
+    @foreach($header_consequence as $header)
         <th style="text-align:center;">{{$header->description}}</th>
-  @endforeach
+    @endforeach
 </tr>
 </thead>
 <tboby>
     @foreach ($rows_consequence as $rows_conseq)
     <tr>
-        <td width="5%" align="center">{{$rows_conseq->description}}</td>
+        <td width="5%" align="center" bgcolor="{{$rows_conseq->ref1}}">{{$rows_conseq->description}}</td>
         @foreach ($consequence as $conseq)
             @if ($conseq->rows == $rows_conseq->rows)
-                <td class="cell2"><textarea class="conseq" cols="35" readonly name="{{$conseq->id}}">{{$conseq->description}}</textarea></td>
+                <td class="cell2"><textarea class="conseq" cols="35"  name="{{$conseq->id}}">{{$conseq->description}}</textarea></td>
             @endif
         @endforeach
     <tr>
@@ -58,8 +73,8 @@
             @foreach ($occorrence as $occ)
                 <tr>
                     <td width="5%" align="center">{{$occ->rows}}</td>
-                    <td><input type="text" class="occe" style="width:100%;" readonly name="{{$occ->id}}" value="{{$occ->description}}"></td>
-                    <td><input type="text" class="occe" style="width:100%;" readonly name="{{$occ->rows}}" value="{{$occ->ref1}}"></td>
+                    <td><input type="text" class="occe" style="width:100%;"  name="{{$occ->id}}" value="{{$occ->description}}"></td>
+                    <td><input type="text" class="occe" style="width:100%;"  name="{{$occ->rows}}" value="{{$occ->ref1}}"></td>
                 </tr>
             @endforeach
             </tbody>
@@ -82,8 +97,8 @@
             @foreach ($detection as $dec)
                 <tr>
                     <td width="10%" align="center">{{$dec->rows}}</td>
-                    <td><input type="text" class="det" style="width:100%;" readonly name="{{$dec->id}}" value="{{$dec->description}}"></td>
-                    <td><input type="text" class="det" style="width:100%;" readonly name="{{$dec->rows}}" value="{{$dec->ref1}}"></td>
+                    <td><input type="text" class="det" style="width:100%;"  name="{{$dec->id}}" value="{{$dec->description}}"></td>
+                    <td><input type="text" class="det" style="width:100%;"  name="{{$dec->rows}}" value="{{$dec->ref1}}"></td>
                 </tr>
             @endforeach
             </tbody>
@@ -99,9 +114,9 @@ $(document).ready(function() {
 
     var status = $("#status").val();
     if (status==0) {
-        $("#panel-save").show();
+        $("#panel-save").html('<a href="#" class="btn btn-success" id="saveall" onclick="saveallcomplex();return false;"><i class="fa fa-save"></i>  Save</a>');
     }else if(status==1){
-        $("#panel-save").hide();
+        $("#panel-save").html('<a href="#" class="btn btn-warning" id="saveall" onclick="saveallcomplex();return false;"><i class="fa fa-save"></i>  Update</a>');
     }
 
 

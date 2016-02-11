@@ -122,9 +122,12 @@
         serv_id:$("#serv_id").val(),
       },
       success:function(data){
-        if (data == 1) {
+        console.log(data);
+        if (data.ref1 == 'Non Critical') {
           $("#body-question").load("{{url()}}/asset-register/questiondefault");
-        }else if (data == 2) {
+        }else if (data.ref1 == 'Critical') {
+          $("#body-question").html('');
+        }else{
           $("#body-question").html('');
         }
       }

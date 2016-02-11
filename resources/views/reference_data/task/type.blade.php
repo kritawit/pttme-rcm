@@ -114,7 +114,9 @@
         $(':checkbox:checked[name^=active]').val(function() {
           deleteSelect(this.value);
         });
-        window.location.reload();
+        setTimeout(function() {
+          window.location.reload();
+        }, 100);
       }
     }else {
       alert('Please select!');

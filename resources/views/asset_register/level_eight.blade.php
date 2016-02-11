@@ -19,6 +19,12 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="" class="control-label col-lg-4">Drawing No.:</label>
+      <div class="col-lg-8">
+          <input type="number" name="drawing"  value="{{ $assets->drawing}}"   class="form-control node-detail">
+      </div>
+    </div>
+    <div class="form-group">
         <label for="" class="control-label col-lg-4">Created Date:</label>
         <div class="col-lg-8">
         <input type="text" value="{{ $assets->created_at}}" disabled  class="form-control">

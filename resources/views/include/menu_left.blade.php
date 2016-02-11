@@ -10,9 +10,11 @@
             </div>
           </div>
           <ul class="sidebar-menu">
-            <li class="header">File</li>
-            <li><a href="{{ url('project') }}"><i class="fa fa-circle-o text-red"></i> <span>New / Open Project</span></a></li>
-              <li class="header">System Setup</li>
+              <li class="header" style="color:#fff;">GUIDELINE</li>
+              <li><a href="{{ url('guideline') }}"><i class="fa fa-file-o"></i> <span>Guideline</span></a></li>
+            <li class="header" style="color:#fff;">PROJECT</li>
+            <li><a href="{{ url('project') }}"><i class="fa fa-circle-o"></i> <span>New / Open Project</span></a></li>
+              <li class="header" style="color:#fff;">SYSTEM SETUP</li>
               <li class="treeview">
                   <a href="#">
                       <i class="fa fa-cogs"></i> <span>Reference Data</span> <i class="fa fa-angle-left pull-right"></i>
@@ -30,7 +32,7 @@
                       <li><a href="{{ url('reference-data/order-type') }}"><i class="fa fa-circle-o"></i> Order Type</a></li>
                   </ul>
               </li>
-            <li class="header">WORKFLOW</li>
+            <li class="header" style="color:#fff;">WORKFLOW</li>
             <li>
               <a href="{{ url('asset-register/l8detail') }}">
                 <i class="fa fa-dashboard"></i> <span>Asset Register</span>
@@ -77,6 +79,11 @@
                 <li><a href="{{ url('report/tasktype') }}"><i class="fa fa-circle-o"></i> Charts Task Type<br>(Units) </a></li>
               </ul>
             </li>
+              <li>
+                  <a href="{{ url('member/list') }}" class="{{ Request::is('member/list') ? 'active' : '' }}">
+                      <i class="fa fa-user"></i> <span>User Management</span>
+                  </a>
+              </li>
           </ul>
         </section>
       </aside>

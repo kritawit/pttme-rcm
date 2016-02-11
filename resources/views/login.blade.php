@@ -15,5 +15,10 @@
         <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
       </div><!-- /.col -->
     </div>
+    <div class="row">
+      <div class="col-sm-12 text-center" style="margin-top:25px;">
+        <a class="btn btn-warning btn-block btn-flat" href="public/files/PTT_GLOBAL_CHEMICAL_74896_09022016.zip">File for Imported (Default)</a>
+      </div>
+    </div>
   </form>
 @stop
